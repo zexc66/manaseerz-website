@@ -10,6 +10,7 @@ import { AboutSection } from '@/components/about-section';
 import { Footer } from '@/components/footer';
 import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
+import { Chatbot } from '@/components/chatbot';
 
 export default function HomePage() {
   return (
@@ -28,6 +29,7 @@ export default function HomePage() {
         <EnhancedContactForm />
         <Footer />
         <Toaster />
+        <Chatbot />
       </main>
     </AppWrapper>
   );

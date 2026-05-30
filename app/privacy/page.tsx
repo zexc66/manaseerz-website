@@ -79,11 +79,11 @@ export default function PrivacyPage() {
                   You have the right to:
                 </p>
                 <ul className="space-y-2 text-[var(--color-text-secondary)]">
-                  <li>• Access your personal information</li>
-                  <li>• Request deletion of your data</li>
-                  <li>• Opt out of marketing communications</li>
-                  <li>• Request a copy of your data</li>
-                  <li>• Correct inaccurate information</li>
+                  <li>• <strong>Access your personal information</strong></li>
+                  <li>• <strong>Request deletion of your data</strong></li>
+                  <li>• <strong>Opt out of marketing communications</strong></li>
+                  <li>• <strong>Request a copy of your data</strong></li>
+                  <li>• <strong>Correct inaccurate information</strong></li>
                 </ul>
                 <p className="text-[var(--color-text-secondary)] mt-4">
                   To exercise these rights, contact us at info@manaseerz.com or (682) 451-5951.
