@@ -25,6 +25,12 @@
   --color-warning: oklch(0.75 0.18 75);
   --color-error: oklch(0.65 0.18 25);
 
+  /* Gradient Presets - Subtle metallic depth */
+  --gradient-gold-warm: linear-gradient(135deg, oklch(78% 0.14 83) 0%, oklch(83% 0.11 84) 100%);
+  --gradient-gold-cool: linear-gradient(135deg, oklch(83% 0.11 84) 0%, oklch(88% 0.08 85) 100%);
+  --gradient-gold-subtle: linear-gradient(135deg, oklch(72% 0.16 82) 0%, oklch(78% 0.14 83) 50%, oklch(83% 0.11 84) 100%);
+  --gradient-gold-mesh: radial-gradient(ellipse at top, oklch(78% 0.14 83) 0%, oklch(88% 0.08 85) 50%, transparent 100%);
+
   /* Spacing Scale - 4pt base */
   --space-xs: 4px;
   --space-sm: 8px;
@@ -36,7 +42,20 @@
   --space-4xl: 64px;
   --space-5xl: 96px;
 
-  /* Typography Scale */
+  /* Typography Scale - Tesla-style refined hierarchy */
+  --text-xs: clamp(0.875rem, 0.75rem + 0.25vw, 1rem);
+  --text-sm: clamp(1rem, 0.875rem + 0.25vw, 1.125rem);
+  --text-base: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-lg: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.25rem + 0.75vw, 2rem);
+  --text-2xl: clamp(1.875rem, 1.5rem + 1vw, 2.25rem);
+  --text-3xl: clamp(2.25rem, 1.875rem + 1.5vw, 2.5rem);
+  --text-4xl: clamp(2.5rem, 2rem + 2vw, 3rem);
+  --text-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --text-6xl: clamp(3.75rem, 3rem + 3vw, 5rem);
+  --text-7xl: clamp(4.5rem, 3.75rem + 3.5vw, 6rem);
+  
+  /* Display font - refined for technical sophistication */
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Outfit', sans-serif;
 

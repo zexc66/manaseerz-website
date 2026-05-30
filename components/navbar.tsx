@@ -30,6 +30,7 @@ export function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className={cn(
           'fixed top-0 left-0 right-0 z-[var(--z-sticky)] transition-all duration-300',
           isScrolled
@@ -61,7 +62,7 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link, index) => (
+               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
@@ -71,7 +72,8 @@ export function Navbar() {
                   }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
+                  transition={{ delay: 0.1 + index * 0.1, duration: 0.5, ease: "easeOut" }}
+                  whileHover={{ y: -2 }}
                   className="text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-gold-primary)]"
                 >
                   {link.label}
@@ -102,13 +104,19 @@ export function Navbar() {
             </motion.div>
 
             {/* Mobile Menu Button */}
-            <button
+            <motion.button
+              whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden rounded-lg p-2 text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-surface-800)]"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </motion.div>
+            </motion.button>
           </div>
         </div>
 
@@ -163,6 +171,9 @@ export function Navbar() {
         href="tel:6824515951"
         initial={{ y: 100 }}
         animate={{ y: 0 }}
+        transition={{ delay: 0.8, duration: 0.5, ease: "easeOut" }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         className="fixed bottom-4 right-4 z-[var(--z-sticky)] lg:hidden rounded-full bg-[var(--color-gold-primary)] p-4 shadow-[var(--shadow-gold)]"
         aria-label="Call now"
       >

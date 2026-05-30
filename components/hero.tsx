@@ -47,19 +47,19 @@ export function Hero() {
       }} />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column - Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="space-y-8"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-12"
           >
             {/* Tag */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
             >
               <div className="inline-flex items-center gap-2 rounded-full bg-[var(--color-gold-primary)]/10 border border-[var(--color-gold-primary)]/20 px-4 py-2 text-sm font-medium text-[var(--color-gold-primary)]">
                 <ShieldCheck className="h-4 w-4" />
@@ -71,15 +71,15 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
             >
-              <h1 className="font-display text-5xl font-bold text-[var(--color-text-primary)] sm:text-6xl lg:text-7xl leading-[1.1]">
+              <h1 className="font-display font-bold text-[var(--text-4xl)] sm:text-[var(--text-6xl)] lg:text-[var(--text-7xl)] leading-[1.08] tracking-tight">
                 DFW's Premier
                 <span className="block text-[var(--color-gold-primary)]">
                   Electrical Specialists
                 </span>
               </h1>
-              <p className="mt-6 text-xl text-[var(--color-text-secondary)] leading-relaxed max-w-2xl">
+              <p className="mt-16 text-[var(--text-xl)] text-[var(--color-text-secondary)] leading-[1.7] max-w-3xl">
                 Precision electrical crafted for excellence. From luxury chandelier installs to complete renovations — handled with licensed precision.
               </p>
             </motion.div>
@@ -88,27 +88,33 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-wrap gap-6"
+              transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
+              className="flex flex-wrap gap-10 pt-4"
             >
               {[
                 { value: '5-Star', label: 'Client Rating', icon: Star },
                 { value: '24hr', label: 'Response Time', icon: Clock },
                 { value: '100%', label: 'DFW Coverage', icon: Map },
               ].map((metric) => (
-                <div key={metric.label} className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-gold-primary)]/10">
-                    <metric.icon className="h-5 w-5 text-[var(--color-gold-primary)]" />
-                  </div>
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
+                  className="flex items-center gap-4"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-gold-primary)]/10 border border-[var(--color-gold-primary)]/20"
+                  >
+                    <metric.icon className="h-6 w-6 text-[var(--color-gold-primary)]" />
+                  </motion.div>
                   <div>
-                    <p className="text-lg font-bold text-[var(--color-text-primary)]">
-                      {metric.value}
-                    </p>
-                    <p className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">
-                      {metric.label}
-                    </p>
+                    <p className="text-xl font-bold text-[var(--color-text-primary)]">{metric.value}</p>
+                    <p className="text-sm text-[var(--color-text-secondary)]">{metric.label}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
 
@@ -116,23 +122,26 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="rounded-lg bg-[var(--color-gold-primary)] px-8 py-4 text-base font-semibold text-[var(--color-black-pure)] transition-all hover:bg-[var(--color-gold-light)] hover:shadow-[var(--shadow-gold)] active:scale-[0.98] flex items-center justify-center gap-2"
               >
                 Get a Free Quote
                 <ArrowRight className="h-5 w-5" />
-              </button>
-              <a
+              </motion.button>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
                 href="tel:6824515951"
                 className="rounded-lg border-2 border-[var(--color-surface-800)] px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] transition-all hover:border-[var(--color-gold-primary)] hover:text-[var(--color-gold-primary)] flex items-center justify-center gap-2"
               >
                 <Phone className="h-5 w-5" />
                 (682) 451-5951
-              </a>
+              </motion.a>
             </motion.div>
           </motion.div>
 
@@ -140,7 +149,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative"
           >
             <div className="grid gap-4 sm:grid-cols-2">
@@ -149,13 +158,18 @@ export function Hero() {
                   key={service.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="group rounded-2xl border border-[var(--color-surface-800)] bg-[var(--color-surface-900)]/50 p-6 transition-all hover:border-[var(--color-gold-primary)] hover:shadow-[var(--shadow-gold)] hover:-translate-y-1"
+                  transition={{ delay: 0.6 + index * 0.1, duration: 0.5, ease: "easeOut" }}
+                  whileHover={{ y: -4 }}
+                  className="group rounded-2xl border border-[var(--color-surface-800)] bg-[var(--color-surface-900)]/50 p-6 transition-all hover:border-[var(--color-gold-primary)] hover:shadow-[var(--shadow-gold)]"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-gold-primary)]/10 group-hover:bg-[var(--color-gold-primary)] transition-colors">
-                      <ServiceIcon icon={service.icon} className="h-6 w-6 text-[var(--color-gold-primary)] group-hover:text-[var(--color-black-pure)] transition-colors" />
-                    </div>
+                   <div className="flex items-start gap-4">
+                     <motion.div
+                       whileHover={{ rotate: 360, scale: 1.1 }}
+                       transition={{ duration: 0.6, ease: "easeOut" }}
+                       className="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-gold-primary)]/10 group-hover:bg-[var(--color-gold-primary)] transition-colors"
+                     >
+                       <ServiceIcon icon={service.icon} className="h-6 w-6 text-[var(--color-gold-primary)] group-hover:text-[var(--color-black-pure)] transition-colors" />
+                     </motion.div>
                     <div className="flex-1">
                       <h3 className="font-display text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-gold-primary)] transition-colors">
                         {service.title}
@@ -193,61 +207,82 @@ export function Services() {
   return (
     <section id="services" className="py-24 bg-[var(--color-black-rich)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center space-y-4 mb-16"
-        >
-          <h2 className="font-display text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
-            Our Premium Services
-          </h2>
-          <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            From luxury chandelier installs to complete renovations, handled with licensed precision.
-          </p>
-        </motion.div>
+         {/* Section Header */}
+         <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true, margin: "-100px" }}
+           transition={{ duration: 0.6, ease: "easeOut" }}
+           className="text-center space-y-6 mb-20"
+         >
+           <h2 className="font-display text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl">
+             Our Premium Services
+           </h2>
+           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed">
+             From luxury chandelier installs to complete renovations, handled with licensed precision.
+           </p>
+         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group rounded-2xl border border-[var(--color-surface-800)] bg-[var(--color-surface-900)]/50 p-8 transition-all hover:border-[var(--color-gold-primary)] hover:shadow-[var(--shadow-gold)] hover:-translate-y-2"
-            >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-gold-primary)]/10 group-hover:bg-[var(--color-gold-primary)] transition-colors">
-                  <ServiceIcon icon={service.icon} className="h-7 w-7 text-[var(--color-gold-primary)] group-hover:text-[var(--color-black-pure)] transition-colors" />
+         {/* Services Grid - Asymmetric with varied spacing */}
+         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+           {services.map((service, index) => (
+             <motion.div
+               key={service.id}
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.6, delay: index * 0.1 }}
+               className={cn(
+                 "group border border-[var(--color-surface-800)] bg-[var(--color-surface-900)]/50 transition-all",
+                 index === 0 ? "lg:col-span-2 lg:row-span-2 rounded-2xl p-12 hover:border-[var(--color-gold-primary)] hover:shadow-[var(--shadow-gold)] hover:-translate-y-1" : "rounded-2xl p-8 hover:border-[var(--color-gold-primary)] hover:shadow-[var(--shadow-gold)] hover:-translate-y-1"
+               )}
+             >
+               <div className={cn(
+                 "flex items-start gap-4 mb-6",
+                 index === 0 ? "gap-6" : "gap-4"
+               )}>
+                 <div className={cn(
+                   "flex items-center justify-center rounded-xl bg-[var(--color-gold-primary)]/10 border border-[var(--color-gold-primary)]/20 group-hover:bg-[var(--color-gold-primary)] transition-colors",
+                   index === 0 ? "h-16 w-16 lg:h-20 lg:w-20" : "h-14 w-14"
+                 )}>
+                   <ServiceIcon icon={service.icon} className={cn(
+                     "text-[var(--color-gold-primary)] group-hover:text-[var(--color-black-pure)] transition-colors",
+                     index === 0 ? "h-8 w-8 lg:h-10 lg:w-10" : "h-7 w-7"
+                   )} />
+                 </div>
+                 <div className="flex-1">
+                   <h3 className={cn(
+                     "font-display text-xl font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-gold-primary)] transition-colors",
+                     index === 0 ? "text-2xl lg:text-3xl" : ""
+                   )}>
+                     {service.title}
+                   </h3>
+                 </div>
+               </div>
+                <p className={cn(
+                  "text-[var(--color-text-secondary)] leading-relaxed",
+                  index === 0 ? "text-lg mb-8" : "mb-6"
+                )}>
+                  {service.description}
+                </p>
+                <div className={cn(
+                  "flex items-center justify-between pt-6 border-t border-[var(--color-surface-800)]",
+                  index === 0 ? "pt-8" : ""
+                )}>
+                  <span className="text-sm font-medium text-[var(--color-gold-primary)]">
+                    {service.priceRange}
+                  </span>
+                  <button
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="flex items-center gap-2 text-sm font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-gold-primary)] transition-colors"
+                  >
+                    Get Quote
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-xl font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-gold-primary)] transition-colors">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
-              <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                {service.description}
-              </p>
-              <div className="flex items-center justify-between pt-6 border-t border-[var(--color-surface-800)]">
-                <span className="text-sm font-medium text-[var(--color-gold-primary)]">
-                  {service.priceRange}
-                </span>
-                <button
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="flex items-center gap-2 text-sm font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-gold-primary)] transition-colors"
-                >
-                  Get Quote
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+             </motion.div>
+           ))}
+         </div>
       </div>
     </section>
   );
