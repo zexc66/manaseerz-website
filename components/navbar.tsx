@@ -81,13 +81,19 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden lg:flex items-center gap-4"
+              className="hidden lg:flex items-center gap-3"
             >
+              <a
+                href="/book-appointment"
+                className="px-4 py-2 rounded-lg border-2 border-[var(--color-gold-primary)] text-[var(--color-gold-primary)] font-medium transition-all hover:bg-[var(--color-gold-primary)] hover:text-[var(--color-black-pure)]"
+              >
+                Book Appointment
+              </a>
               <a
                 href="tel:6824515951"
                 className="flex items-center gap-2 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-gold-primary)]"
@@ -95,12 +101,6 @@ export function Navbar() {
                 <Phone className="h-4 w-4" />
                 (682) 451-5951
               </a>
-              <button
-                onClick={() => smoothScroll('contact')}
-                className="rounded-lg bg-[var(--color-gold-primary)] px-6 py-2.5 text-sm font-semibold text-[var(--color-black-pure)] transition-all hover:bg-[var(--color-gold-light)] hover:shadow-[var(--shadow-gold)] active:scale-[0.98]"
-              >
-                Get Free Quote
-              </button>
             </motion.div>
 
             {/* Mobile Menu Button */}
