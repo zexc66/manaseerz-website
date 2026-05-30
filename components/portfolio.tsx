@@ -6,61 +6,378 @@ import { Filter, Image as ImageIcon, ArrowRight, ZoomIn } from 'lucide-react';
 import { services } from '@/lib/data';
 import { cn } from '@/lib/utils';
 
-// Portfolio data - replace with real project data
+// Portfolio data with real Unsplash images
 const portfolioItems = [
+  // Chandelier Installations (6 items)
   {
     id: 1,
-    title: 'Luxury Chandelier Installation',
+    title: 'Luxury Crystal Chandelier',
     category: 'chandelier-installation',
     location: 'Frisco, TX',
-    image: '/placeholder-portfolio-1.jpg', // Replace with real images
+    image: 'https://images.unsplash.com/photo-1513506003011-3b03c801cc63?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1513506003011-3b03c801cc63?q=80&w=400&auto=format&fit=crop',
     description: 'Installed a stunning 12-light crystal chandelier in a custom-built home dining room with cathedral ceiling.',
     tags: ['Crystal Chandelier', 'High Ceiling', 'Custom Home'],
   },
   {
     id: 2,
-    title: 'Tesla Wall Connector Setup',
+    title: 'Modern Pendant Collection',
+    category: 'chandelier-installation',
+    location: 'Prosper, TX',
+    image: 'https://images.unsplash.com/photo-1507473888900-52e1ad14592d?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1507473888900-52e1ad14592d?q=80&w=400&auto=format&fit=crop',
+    description: 'Installed a collection of 6 modern glass pendant lights over kitchen island with dimmer control.',
+    tags: ['Pendant Lights', 'Kitchen Island', 'Dimmer'],
+  },
+  {
+    id: 3,
+    title: 'Vintage Brass Restoration',
+    category: 'chandelier-installation',
+    location: 'Highland Park, TX',
+    image: 'https://images.unsplash.com/photo-1540932296774-3ed6918e4473?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1540932296774-3ed6918e4473?q=80&w=400&auto=format&fit=crop',
+    description: 'Restored and installed a vintage brass chandelier with complete electrical upgrade and secure mounting.',
+    tags: ['Brass Chandelier', 'Restoration', 'Electrical Upgrade'],
+  },
+  {
+    id: 4,
+    title: 'Linear LED Chandelier',
+    category: 'chandelier-installation',
+    location: 'Southlake, TX',
+    image: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?q=80&w=400&auto=format&fit=crop',
+    description: 'Modern linear LED chandelier installation over dining table with warm white temperature.',
+    tags: ['Linear LED', 'Modern Design', 'Warm White'],
+  },
+  {
+    id: 5,
+    title: 'Multi-Layer Chandelier',
+    category: 'chandelier-installation',
+    location: 'Plano, TX',
+    image: 'https://images.unsplash.com/photo-1560666630-75d93e4c1b19?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1560666630-75d93e4c1b19?q=80&w=400&auto=format&fit=crop',
+    description: 'Multi-tier crystal chandelier with specialized mounting for high-ceiling entryway.',
+    tags: ['Multi-Tier', 'Entryway', 'Crystal'],
+  },
+  {
+    id: 6,
+    title: 'Mini Chandelier Cluster',
+    category: 'chandelier-installation',
+    location: 'McKinney, TX',
+    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=400&auto=format&fit=crop',
+    description: 'Cluster of 3 mini chandeliers for living room with height-adjustable installation.',
+    tags: ['Mini Chandeliers', 'Living Room', 'Adjustable Height'],
+  },
+
+  // EV Charger Installations (6 items)
+  {
+    id: 7,
+    title: 'Tesla Wall Connector',
     category: 'ev-charger-installation',
     location: 'Plano, TX',
-    image: '/placeholder-portfolio-2.jpg',
+    image: 'https://images.unsplash.com/photo-1619317816960-70b33c3b434c?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1619317816960-70b33c3b434c?q=80&w=400&auto=format&fit=crop',
     description: 'Complete Tesla Wall Connector installation with 48A circuit panel upgrade for luxury estate.',
     tags: ['Tesla', 'Wall Connector', 'Circuit Upgrade'],
   },
   {
-    id: 3,
-    title: 'Smart Home Integration',
+    id: 8,
+    title: 'Universal Level 2 Charger',
+    category: 'ev-charger-installation',
+    location: 'Southlake, TX',
+    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=400&auto=format&fit=crop',
+    description: 'ChargePoint Level 2 charger installation with weatherproofing and 240V dedicated circuit.',
+    tags: ['ChargePoint', 'Level 2', 'Weatherproof'],
+  },
+  {
+    id: 9,
+    title: 'NEMA 14-50 Outlet',
+    category: 'ev-charger-installation',
+    location: 'Lewisville, TX',
+    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=400&auto=format&fit=crop',
+    description: 'Installed NEMA 14-50 outlet for portable EV charger with dedicated 50A circuit.',
+    tags: ['NEMA 14-50', 'Portable Charger', '50A Circuit'],
+  },
+  {
+    id: 10,
+    title: 'Multi-Car Charging Station',
+    category: 'ev-charger-installation',
+    location: 'Frisco, TX',
+    image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=400&auto=format&fit=crop',
+    description: 'Dual charging station setup with shared circuit load balancing for multiple vehicles.',
+    tags: ['Dual Charger', 'Load Balancing', 'Multi-Vehicle'],
+  },
+  {
+    id: 11,
+    title: 'Outdoor Charger Installation',
+    category: 'ev-charger-installation',
+    location: 'The Colony, TX',
+    image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=400&auto=format&fit=crop',
+    description: 'Weather-rated EV charger installation in driveway with conduit and weatherproof housing.',
+    tags: ['Outdoor Rated', 'Weatherproof', 'Driveway'],
+  },
+  {
+    id: 12,
+    title: 'Circuit Panel Upgrade',
+    category: 'ev-charger-installation',
+    location: 'Allen, TX',
+    image: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=400&auto=format&fit=crop',
+    description: 'Upgraded from 100A to 200A panel to support EV charger with dedicated circuits.',
+    tags: ['Panel Upgrade', '200A', 'EV Ready'],
+  },
+
+  // Smart Home Installations (6 items)
+  {
+    id: 13,
+    title: 'Lutron Caséta System',
     category: 'smart-switches',
     location: 'McKinney, TX',
-    image: '/placeholder-portfolio-3.jpg',
+    image: 'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?q=80&w=400&auto=format&fit=crop',
     description: 'Whole-home smart lighting system with Lutron Caséta and voice control integration.',
     tags: ['Lutron Caséta', 'Voice Control', 'Whole Home'],
   },
   {
-    id: 4,
-    title: 'Kitchen Renovation Wiring',
+    id: 14,
+    title: 'Google Home Integration',
+    category: 'smart-switches',
+    location: 'Carrollton, TX',
+    image: 'https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=400&auto=format&fit=crop',
+    description: 'Smart switches integrated with Google Home for voice-activated lighting control.',
+    tags: ['Google Home', 'Voice Control', 'Smart Switches'],
+  },
+  {
+    id: 15,
+    title: 'Smart Thermostat Hub',
+    category: 'smart-switches',
+    location: 'Addison, TX',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=400&auto=format&fit=crop',
+    description: 'Ecobee smart thermostat with lighting automation for energy efficiency.',
+    tags: ['Ecobee', 'Automation', 'Energy Efficient'],
+  },
+  {
+    id: 16,
+    title: 'Philips Hue Setup',
+    category: 'smart-switches',
+    location: 'Richardson, TX',
+    image: 'https://images.unsplash.com/photo-1558470598-a5dda9640f6b?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1558470598-a5dda9640f6b?q=80&w=400&auto=format&fit=crop',
+    description: 'Philips Hue color-changing smart lights with scene programming and remote control.',
+    tags: ['Philips Hue', 'Color Changing', 'Scene Programming'],
+  },
+  {
+    id: 17,
+    title: 'Dimmer Switch Installation',
+    category: 'smart-switches',
+    location: 'Garland, TX',
+    image: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=400&auto=format&fit=crop',
+    description: 'Smart dimmer switches throughout living areas with preset lighting scenes.',
+    tags: ['Dimmer', 'Lighting Scenes', 'Living Room'],
+  },
+  {
+    id: 18,
+    title: 'Whole-Home Automation',
+    category: 'smart-switches',
+    location: 'Irving, TX',
+    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=400&auto=format&fit=crop',
+    description: 'Complete home automation hub controlling lights, thermostat, and security systems.',
+    tags: ['Automation Hub', 'Security', 'Complete System'],
+  },
+
+  // Renovation Projects (6 items)
+  {
+    id: 19,
+    title: 'Kitchen Remodel Wiring',
     category: 'renovation-electrical',
     location: 'Lewisville, TX',
-    image: '/placeholder-portfolio-4.jpg',
+    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=400&auto=format&fit=crop',
     description: 'Complete electrical for kitchen remodel including island lighting, under-cabinet lighting, and appliance circuits.',
     tags: ['Kitchen Remodel', 'Island Lighting', 'Appliance Circuits'],
   },
   {
-    id: 5,
+    id: 20,
+    title: 'Bathroom Renovation',
+    category: 'renovation-electrical',
+    location: 'Frisco, TX',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400&auto=format&fit=crop',
+    description: 'Bathroom electrical upgrade with GFCI protection, ventilation fan, and vanity lighting.',
+    tags: ['Bathroom', 'GFCI', 'Ventilation'],
+  },
+  {
+    id: 21,
+    title: 'Whole-House Rewire',
+    category: 'renovation-electrical',
+    location: 'Plano, TX',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=400&auto=format&fit=crop',
+    description: 'Complete electrical rewire for 1960s home including new panel, outlets, and lighting.',
+    tags: ['Rewire', 'Panel Upgrade', 'Vintage Home'],
+  },
+  {
+    id: 22,
+    title: 'Basement Finishing',
+    category: 'renovation-electrical',
+    location: 'Prosper, TX',
+    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=400&auto=format&fit=crop',
+    description: 'Basement electrical setup for home theater, office space, and recreation room.',
+    tags: ['Basement', 'Home Theater', 'Recreation'],
+  },
+  {
+    id: 23,
+    title: 'Attic Conversion',
+    category: 'renovation-electrical',
+    location: 'McKinney, TX',
+    image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=400&auto=format&fit=crop',
+    description: 'Electrical planning for attic conversion to master suite with recessed lighting and outlets.',
+    tags: ['Attic', 'Master Suite', 'Recessed Lighting'],
+  },
+  {
+    id: 24,
+    title: 'Outdoor Kitchen Power',
+    category: 'renovation-electrical',
+    location: 'Southlake, TX',
+    image: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?q=80&w=400&auto=format&fit=crop',
+    description: 'Outdoor kitchen electrical setup including outlets for grill, refrigerator, and lighting.',
+    tags: ['Outdoor Kitchen', 'Weatherproof', 'Grill Power'],
+  },
+
+  // Outlet & Circuit Projects (6 items)
+  {
+    id: 25,
     title: 'Outdoor Lighting System',
     category: 'outlet-circuit',
     location: 'Southlake, TX',
-    image: '/placeholder-portfolio-5.jpg',
+    image: 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?q=80&w=400&auto=format&fit=crop',
     description: 'Professional outdoor lighting installation with landscape lighting and motion-activated security lights.',
     tags: ['Outdoor Lighting', 'Security', 'Landscape'],
   },
   {
-    id: 6,
-    title: 'Modern Pendant Collection',
-    category: 'chandelier-installation',
+    id: 26,
+    title: 'USB-C Outlet Installation',
+    category: 'outlet-circuit',
+    location: 'Allen, TX',
+    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=400&auto=format&fit=crop',
+    description: 'Modern USB-C and USB-A outlet installation in home office for device charging.',
+    tags: ['USB-C', 'Office', 'Device Charging'],
+  },
+  {
+    id: 27,
+    title: 'Bathroom GFCI Upgrade',
+    category: 'outlet-circuit',
+    location: 'Carrollton, TX',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400&auto=format&fit=crop',
+    description: 'GFCI outlet installation in bathroom for code compliance and water safety.',
+    tags: ['GFCI', 'Bathroom', 'Safety'],
+  },
+  {
+    id: 28,
+    title: 'Garage Workshop Power',
+    category: 'outlet-circuit',
+    location: 'The Colony, TX',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=400&auto=format&fit=crop',
+    description: 'Heavy-duty outlet installation in garage workshop for power tools and equipment.',
+    tags: ['Garage', 'Workshop', 'Heavy Duty'],
+  },
+  {
+    id: 29,
+    title: 'Patio Power Setup',
+    category: 'outlet-circuit',
+    location: 'Celina, TX',
+    image: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?q=80&w=400&auto=format&fit=crop',
+    description: 'Weatherproof outdoor outlets on patio for string lights, fans, and outdoor electronics.',
+    tags: ['Patio', 'Weatherproof', 'Outdoor Living'],
+  },
+  {
+    id: 30,
+    title: 'Office Outlet Upgrade',
+    category: 'outlet-circuit',
+    location: 'Richardson, TX',
+    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=400&auto=format&fit=crop',
+    description: 'Multiple outlet installation with surge protection for home office equipment.',
+    tags: ['Office', 'Surge Protection', 'Multiple Outlets'],
+  },
+
+  // Range Hood Installations (6 items)
+  {
+    id: 31,
+    title: 'Modern Range Hood Installation',
+    category: 'range-hood',
+    location: 'Plano, TX',
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=400&auto=format&fit=crop',
+    description: 'Sleek stainless steel range hood installation with hidden electrical connections.',
+    tags: ['Stainless Steel', 'Modern', 'Hidden Wiring'],
+  },
+  {
+    id: 32,
+    title: 'Professional Chef Hood',
+    category: 'range-hood',
+    location: 'Highland Park, TX',
+    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=400&auto=format&fit=crop',
+    description: 'Commercial-grade range hood installation in luxury home with proper ventilation ductwork.',
+    tags: ['Commercial Grade', 'Ventilation', 'Luxury Home'],
+  },
+  {
+    id: 33,
+    title: 'Under-Cabinet Range Hood',
+    category: 'range-hood',
+    location: 'Frisco, TX',
+    image: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?q=80&w=400&auto=format&fit=crop',
+    description: 'Compact under-cabinet range hood with LED lighting and effective ventilation.',
+    tags: ['Under-Cabinet', 'LED Lighting', 'Compact'],
+  },
+  {
+    id: 34,
+    title: 'Island Range Hood',
+    category: 'range-hood',
+    location: 'McKinney, TX',
+    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=400&auto=format&fit=crop',
+    description: 'Ceiling-mounted island range hood with ductwork through ceiling.',
+    tags: ['Island Mount', 'Ceiling Duct', 'Modern'],
+  },
+  {
+    id: 35,
+    title: 'Downdraft Ventilation',
+    category: 'range-hood',
+    location: 'Lewisville, TX',
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=400&auto=format&fit=crop',
+    description: 'Pop-up downdraft ventilation system with electrical integration for island cooktop.',
+    tags: ['Downdraft', 'Pop-Up', 'Island Cooktop'],
+  },
+  {
+    id: 36,
+    title: 'Custom Hood Fabrication',
+    category: 'range-hood',
     location: 'Prosper, TX',
-    image: '/placeholder-portfolio-6.jpg',
-    description: 'Installed a collection of 6 modern glass pendant lights over kitchen island with dimmer control.',
-    tags: ['Pendant Lights', 'Kitchen Island', 'Dimmer'],
+    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=400&auto=format&fit=crop',
+    description: 'Custom-fabricated copper range hood with concealed electrical and ventilation.',
+    tags: ['Custom Copper', 'Fabricated', 'Concealed'],
   },
 ];
 
@@ -176,9 +493,14 @@ function PortfolioCard({ project, index, onClick }: { project: typeof portfolioI
       className="group cursor-pointer"
     >
       <div className="relative overflow-hidden rounded-2xl bg-[var(--color-surface-900)]/50 border border-[var(--color-surface-800)]">
-        {/* Placeholder Image */}
-        <div className="aspect-[4/3] bg-gradient-to-br from-[var(--color-surface-800)] to-[var(--color-surface-900)] flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-          <ImageIcon className="h-16 w-16 text-[var(--color-text-muted)]" />
+        {/* Image */}
+        <div className="aspect-[4/3] overflow-hidden bg-[var(--color-surface-900)]">
+          <img
+            src={project.thumbnail || project.image}
+            alt={project.title}
+            loading="lazy"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         </div>
 
         {/* Overlay */}
@@ -240,9 +562,14 @@ function ProjectModal({ project, onClose }: { project: typeof portfolioItems[0];
 
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
-          {/* Placeholder for project images */}
-          <div className="aspect-video rounded-xl bg-gradient-to-br from-[var(--color-surface-800)] to-[var(--color-surface-900)] mb-6 flex items-center justify-center">
-            <ImageIcon className="h-24 w-24 text-[var(--color-text-muted)]" />
+          {/* Project Image */}
+          <div className="aspect-video rounded-xl overflow-hidden mb-6">
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className="space-y-6">
