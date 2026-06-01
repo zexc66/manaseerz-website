@@ -1,0 +1,231 @@
+/* Color System - Manaseerz Electric Design Tokens */
+
+:root {
+  /* ===== BRAND COLORS ===== */
+  
+  /* Primary Gold */
+  --color-gold-50: oklch(0.95 0.02 85);
+  --color-gold-100: oklch(0.90 0.04 85);
+  --color-gold-200: oklch(0.85 0.06 85);
+  --color-gold-300: oklch(0.80 0.08 85);
+  --color-gold-400: oklch(0.75 0.12 85);
+  --color-gold-500: oklch(0.70 0.15 85);   /* Primary accent */
+  --color-gold-600: oklch(0.65 0.18 85);
+  --color-gold-700: oklch(0.60 0.20 85);
+  --color-gold-800: oklch(0.55 0.22 85);
+  --color-gold-900: oklch(0.50 0.24 85);
+
+  /* Base Black (for dark mode) */
+  --color-black-pure: oklch(0% 0 0);
+  --color-black-50: oklch(5% 0.002 280);
+  --color-black-100: oklch(10% 0.003 280);
+  --color-black-200: oklch(15% 0.004 280);
+  --color-black-300: oklch(20% 0.005 280);
+  --color-black-400: oklch(25% 0.006 280);
+  --color-black-500: oklch(30% 0.007 280);
+  --color-black-600: oklch(35% 0.008 280);
+  --color-black-700: oklch(40% 0.009 280);
+  --color-black-800: oklch(45% 0.010 280);
+  --color-black-900: oklch(50% 0.011 280);
+
+  /* ===== NEUTRAL SURFACES (tinted toward gold hue 85) ===== */
+  
+  /* Dark mode surfaces */
+  --color-surface-d-50: oklch(5% 0.001 85);
+  --color-surface-d-100: oklch(10% 0.002 85);
+  --color-surface-d-200: oklch(15% 0.003 85);
+  --color-surface-d-300: oklch(20% 0.004 85);
+  --color-surface-d-400: oklch(25% 0.005 85);
+  --color-surface-d-500: oklch(30% 0.006 85);
+  --color-surface-d-600: oklch(35% 0.007 85);
+  --color-surface-d-700: oklch(40% 0.008 85);
+  --color-surface-d-800: oklch(50% 0.009 85);
+  --color-surface-d-900: oklch(60% 0.010 85);
+
+  /* Light mode surfaces */
+  --color-surface-l-50: oklch(99% 0.001 85);
+  --color-surface-l-100: oklch(98% 0.002 85);
+  --color-surface-l-200: oklch(96% 0.003 85);
+  --color-surface-l-300: oklch(94% 0.004 85);
+  --color-surface-l-400: oklch(92% 0.005 85);
+  --color-surface-l-500: oklch(90% 0.006 85);
+  --color-surface-l-600: oklch(88% 0.007 85);
+  --color-surface-l-700: oklch(85% 0.008 85);
+  --color-surface-l-800: oklch(80% 0.009 85);
+  --color-surface-l-900: oklch(75% 0.010 85);
+
+  /* ===== TEXT COLORS ===== */
+  
+  /* Dark mode text */
+  --color-text-d-primary: oklch(98% 0.003 85);
+  --color-text-d-secondary: oklch(80% 0.005 85);
+  --color-text-d-tertiary: oklch(65% 0.007 85);
+  --color-text-d-muted: oklch(50% 0.008 85);
+  --color-text-d-disabled: oklch(35% 0.006 85);
+  --color-text-d-inverse: oklch(5% 0.001 85);
+
+  /* Light mode text */
+  --color-text-l-primary: oklch(15% 0.008 85);
+  --color-text-l-secondary: oklch(35% 0.006 85);
+  --color-text-l-tertiary: oklch(50% 0.005 85);
+  --color-text-l-muted: oklch(65% 0.004 85);
+  --color-text-l-disabled: oklch(75% 0.003 85);
+  --color-text-l-inverse: oklch(98% 0.001 85);
+
+  /* ===== SEMANTIC COLORS ===== */
+  
+  /* Success (emerald/gold tinted) */
+  --color-success-50: oklch(0.98 0.02 145);
+  --color-success-100: oklch(0.94 0.04 145);
+  --color-success-200: oklch(0.90 0.06 145);
+  --color-success-300: oklch(0.85 0.08 145);
+  --color-success-400: oklch(0.80 0.10 145);
+  --color-success-500: oklch(0.75 0.12 145);
+  --color-success-600: oklch(0.70 0.15 145);
+  --color-success-700: oklch(0.65 0.18 145);
+  --color-success-800: oklch(0.60 0.20 145);
+  --color-success-900: oklch(0.55 0.22 145);
+
+  /* Warning (amber) */
+  --color-warning-50: oklch(0.98 0.02 75);
+  --color-warning-100: oklch(0.94 0.04 75);
+  --color-warning-200: oklch(0.90 0.06 75);
+  --color-warning-300: oklch(0.85 0.08 75);
+  --color-warning-400: oklch(0.80 0.10 75);
+  --color-warning-500: oklch(0.75 0.12 75);
+  --color-warning-600: oklch(0.70 0.15 75);
+  --color-warning-700: oklch(0.65 0.18 75);
+  --color-warning-800: oklch(0.60 0.20 75);
+  --color-warning-900: oklch(0.55 0.22 75);
+
+  /* Error (red/gold tinted) */
+  --color-error-50: oklch(0.98 0.02 25);
+  --color-error-100: oklch(0.94 0.04 25);
+  --color-error-200: oklch(0.90 0.06 25);
+  --color-error-300: oklch(0.85 0.08 25);
+  --color-error-400: oklch(0.80 0.10 25);
+  --color-error-500: oklch(0.75 0.12 25);
+  --color-error-600: oklch(0.70 0.15 25);
+  --color-error-700: oklch(0.65 0.18 25);
+  --color-error-800: oklch(0.60 0.20 25);
+  --color-error-900: oklch(0.55 0.22 25);
+
+  /* Info (blue/gold tinted) */
+  --color-info-50: oklch(0.98 0.02 250);
+  --color-info-100: oklch(0.94 0.04 250);
+  --color-info-200: oklch(0.90 0.06 250);
+  --color-info-300: oklch(0.85 0.08 250);
+  --color-info-400: oklch(0.80 0.10 250);
+  --color-info-500: oklch(0.75 0.12 250);
+  --color-info-600: oklch(0.70 0.15 250);
+  --color-info-700: oklch(0.65 0.18 250);
+  --color-info-800: oklch(0.60 0.20 250);
+  --color-info-900: oklch(0.55 0.22 250);
+
+  /* ===== GRADIENTS ===== */
+  
+  /* Gold gradients */
+  --gradient-gold-primary: linear-gradient(135deg, var(--color-gold-400) 0%, var(--color-gold-600) 100%);
+  --gradient-gold-subtle: linear-gradient(135deg, var(--color-gold-300) 0%, var(--color-gold-400) 50%, var(--color-gold-500) 100%);
+  --gradient-gold-mesh: radial-gradient(ellipse at top, var(--color-gold-400) 0%, var(--color-gold-600) 50%, transparent 100%);
+  --gradient-gold-shimmer: linear-gradient(90deg, transparent, var(--color-gold-400), transparent);
+
+  /* Background gradients */
+  --gradient-black-to-rich: linear-gradient(180deg, var(--color-black-pure) 0%, var(--color-black-200) 100%);
+  --gradient-rich-to-black: linear-gradient(180deg, var(--color-black-200) 0%, var(--color-black-pure) 100%);
+  --gradient-radial-dark: radial-gradient(ellipse at top, var(--color-black-100) 0%, var(--color-black-pure) 70%);
+
+  /* Border gradients */
+  --gradient-border-gold: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-500), var(--color-gold-700));
+
+  /* ===== SYSTEM COLORS (legacy support) ===== */
+  
+  /* Deprecated: Use new semantic naming instead */
+  --color-black-rich: var(--color-black-200);
+  --color-gold-primary: var(--color-gold-500);
+  --color-gold-light: var(--color-gold-400);
+  --color-gold-muted: var(--color-gold-300);
+  --color-surface-100: var(--color-surface-d-100);
+  --color-surface-200: var(--color-surface-d-200);
+  --color-surface-800: var(--color-surface-d-800);
+  --color-surface-900: var(--color-surface-d-900);
+  --color-text-primary: var(--color-text-d-primary);
+  --color-text-secondary: var(--color-text-d-secondary);
+  --color-text-muted: var(--color-text-d-muted);
+  --color-success: var(--color-success-600);
+  --color-warning: var(--color-warning-600);
+  --color-error: var(--color-error-600);
+  --gradient-gold-warm: var(--gradient-gold-primary);
+  --gradient-gold-cool: var(--gradient-gold-subtle);
+  --gradient-gold-mesh: var(--gradient-gold-mesh);
+
+  /* ===== COLOR MIXTURES ===== */
+  
+  /* Gold tinted backgrounds */
+  --color-surface-gold-50: color-mix(in oklch, var(--color-gold-500), transparent 95%);
+  --color-surface-gold-100: color-mix(in oklch, var(--color-gold-500), transparent 90%);
+  --color-surface-gold-200: color-mix(in oklch, var(--color-gold-500), transparent 85%);
+  --color-surface-gold-300: color-mix(in oklch, var(--color-gold-500), transparent 75%);
+  --color-surface-gold-400: color-mix(in oklch, var(--color-gold-500), transparent 60%);
+
+  /* Text with opacity */
+  --color-text-primary-60: color-mix(in oklch, var(--color-text-primary), transparent 40%);
+  --color-text-primary-50: color-mix(in oklch, var(--color-text-primary), transparent 50%);
+  --color-text-primary-40: color-mix(in oklch, var(--color-text-primary), transparent 60%);
+  --color-text-primary-30: color-mix(in oklch, var(--color-text-primary), transparent 70%);
+  --color-text-primary-20: color-mix(in oklch, var(--color-text-primary), transparent 80%);
+  --color-text-primary-10: color-mix(in oklch, var(--color-text-primary), transparent 90%);
+}
+
+/* ===== LIGHT MODE OVERRIDES ===== */
+.light-mode {
+  /* Swap surfaces to light mode */
+  --color-surface-100: var(--color-surface-l-100);
+  --color-surface-200: var(--color-surface-l-200);
+  --color-surface-800: var(--color-surface-l-800);
+  --color-surface-900: var(--color-surface-l-900);
+  
+  /* Swap text to light mode */
+  --color-text-primary: var(--color-text-l-primary);
+  --color-text-secondary: var(--color-text-l-secondary);
+  --color-text-muted: var(--color-text-l-muted);
+  
+  /* Update gradients for light mode */
+  --gradient-radial-dark: radial-gradient(ellipse at top, var(--color-surface-l-50) 0%, var(--color-surface-l-200) 70%);
+}
+
+/* ===== COLOR UTILITY CLASSES ===== */
+.bg-gold-primary { background-color: var(--color-gold-500); }
+.bg-gold-subtle { background-color: var(--color-gold-300); }
+.bg-surface { background-color: var(--color-surface-200); }
+.bg-surface-elevated { background-color: var(--color-surface-300); }
+
+.text-gold-primary { color: var(--color-gold-500); }
+.text-gold-subtle { color: var(--color-gold-300); }
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+
+.border-gold { border-color: var(--color-gold-500); }
+.border-surface { border-color: var(--color-surface-800); }
+
+/* ===== ACCESSIBILITY ===== */
+.color-scheme-dark {
+  color-scheme: dark;
+}
+
+.color-scheme-light {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-mode) {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.dark-mode) {
+    color-scheme: light;
+  }
+}
