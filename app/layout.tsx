@@ -10,7 +10,7 @@ import { StructuredData } from '@/components/structured-data';
 export const metadata: Metadata = {
   title: 'Manaseerz Electric | DFW Premier Electrical Specialists',
   description: 'Licensed electrical specialists serving the Dallas-Fort Worth Metroplex. Precision electrical crafted for excellence - EV chargers, chandeliers, renovations, smart homes.',
-  keywords: 'electrician DFW, licensed electrician Lewisville, EV charger installation Dallas, chandelier installation Frisco, electrical renovation Plano',
+  keywords: 'electrician DFW, licensed electrician Lewisville, EV charger installation Dallas, chandelier installation Frisco, electrical renovation Plano, smart home Texas, electrical panel upgrade, emergency electrical services',
   authors: [{ name: 'Manaseerz Electric' }],
   creator: 'Manaseerz Electric',
   publisher: 'Manaseerz Electric',
@@ -30,12 +30,21 @@ export const metadata: Metadata = {
     siteName: 'Manaseerz Electric',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://manaseerz-web.vercel.app/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Manaseerz Electric - DFW Premier Electrical Specialists',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Manaseerz Electric | DFW Premier Electrical Specialists',
+    title: 'Manaseer Electric | DFW Premier Electrical Specialists',
     description: 'Licensed electrical specialists serving DFW. Same-day & next-day available.',
     creator: '@manaseerzelectric',
+    images: ['https://manaseerz-web.vercel.app/og-image.png'],
   },
   robots: {
     index: true,

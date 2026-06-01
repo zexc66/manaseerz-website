@@ -1,4 +1,5 @@
 import { services, testimonials, contactInfo } from '@/lib/data';
+import enhancedSchema from '../../public/structured-data.jsonld';
 
 export function StructuredData() {
   const organizationSchema = {

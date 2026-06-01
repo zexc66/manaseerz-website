@@ -1,0 +1,168 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://manaseerz-web.vercel.app/#website",
+      "url": "https://manaseerz-web.vercel.app",
+      "name": "Manaseerz Electric",
+      "description": "Licensed electrical specialists serving the Dallas-Fort Worth Metroplex. Precision electrical crafted for excellence - EV chargers, chandeliers, renovations, smart homes.",
+      "publisher": {
+        "@id": "https://manaseerz-web.vercel.app/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://manaseerz-web.vercel.app/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://manaseerz-web.vercel.app/#organization",
+      "name": "Manaseerz Electric",
+      "url": "https://manaseerz-web.vercel.app",
+      "logo": "https://manaseerz-web.vercel.app/icon-192.png",
+      "sameAs": [
+        "https://twitter.com/manaseerzelectric"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+16824515951",
+        "contactType": "customer service",
+        "areaServed": ["Dallas", "Fort Worth", "Plano", "Frisco", "Lewisville", "Irving", "Carrollton", "Denton", "Richardson"],
+        "availableLanguage": ["English"]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://manaseerz-web.vercel.app/service/ev-charger-installation",
+      "name": "EV Charger Installation",
+      "description": "Professional installation of electric vehicle chargers for residential and commercial properties. Tesla, ChargePoint, and other brands.",
+      "provider": {
+        "@id": "https://manaseerz-web.vercel.app/#organization"
+      },
+      "areaServed": ["Dallas", "Fort Worth", "Plano", "Frisco", "Lewisville"],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "type": "OnLocation"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "299.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://manaseerz-web.vercel.app/service/chandelier-installation",
+      "name": "Chandelier Installation",
+      "description": "Expert installation of luxury chandeliers and decorative lighting fixtures with professional assembly and mounting.",
+      "provider": {
+        "@id": "https://manaseerz-web.vercel.app/#organization"
+      },
+      "areaServed": ["Dallas", "Fort Worth", "Plano", "Frisco"],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "type": "OnLocation"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://manaseerz-web.vercel.app/service/electrical-renovation",
+      "name": "Electrical Renovation",
+      "description": "Complete electrical system upgrades for kitchen, bathroom, and whole-home renovations with licensed precision.",
+      "provider": {
+        "@id": "https://manaseerz-web.vercel.app/#organization"
+      },
+      "areaServed": ["Dallas", "Fort Worth", "Plano", "Frisco", "Lewisville", "Irving"],
+      "offers": {
+        "@type": "Offer",
+        "price": "499.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://manaseerz-web.vercel.app/service/smart-home-integration",
+      "name": "Smart Home Integration",
+      "description": "Integration of smart switches, outlets, and home automation systems with voice control and energy monitoring.",
+      "provider": {
+        "@id": "https://manaseerz-web.vercel.app/#organization"
+      },
+      "areaServed": ["Dallas", "Fort Worth", "Plano", "Frisco"],
+      "offers": {
+        "@type": "Offer",
+        "price": "249.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://manaseerz-web.vercel.app/service/panel-upgrades",
+      "name": "Electrical Panel Upgrades",
+      "description": "Electrical panel replacement and circuit breaker upgrades including 200-amp panel installations.",
+      "provider": {
+        "@id": "https://manaseerz-web.vercel.app/#organization"
+      },
+      "areaServed": ["Dallas", "Fort Worth", "Plano", "Frisco", "Irving"],
+      "offers": {
+        "@type": "Offer",
+        "price": "899.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://manaseerz-web.vercel.app/service/emergency-repairs",
+      "name": "Emergency Electrical Repairs",
+      "description": "24/7 emergency electrical services with power outage troubleshooting and urgent repairs.",
+      "provider": {
+        "@id": "https://manaseerz-web.vercel.app/#organization"
+      },
+      "areaServed": ["Dallas", "Fort Worth", "Plano", "Frisco", "Lewisville", "Irving", "Carrollton", "Denton", "Richardson"],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "type": "OnLocation"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "149.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://manaseerz-web.vercel.app/faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are you licensed and insured?",
+          "acceptedAnswer": "Yes, we are fully licensed electrical professionals with comprehensive insurance coverage for your peace of mind."
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer same-day service?",
+          "acceptedAnswer": "Yes, we offer same-day and next-day availability across the entire DFW metroplex for your convenience."
+        },
+        {
+          "@type": "Question",
+          "name": "What areas do you serve?",
+          "acceptedAnswer": "We serve the entire Dallas-Fort Worth Metroplex including Dallas, Fort Worth, Plano, Frisco, Lewisville, Irving, Carrollton, Denton, and Richardson."
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer free quotes?",
+          "acceptedAnswer": "Yes, we provide detailed free quotes for all our services with transparent pricing and no hidden fees."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Manaseerz Electric",
+  "image": "https://manaseerz-web.vercel.app/icon-192.png",
+  "@id": "https://manaseerz-web.vercel.app",
+  "url": "https://manaseerz-web.vercel.app",
+  "telephone": "+16824515951",
+  "email": "info@manaseerz.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dallas-Fort Worth",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 32.7767,
+      "longitude": -96.7970
+    },
+    "geoRadius": "50000"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      { "@type": "DayOfWeek", "name": "Monday" },
+      { "@type": "DayOfWeek", "name": "Tuesday" },
+      { "@type": "DayOfWeek", "name": "Wednesday" },
+      { "@type": "DayOfWeek", "name": "Thursday" },
+      { "@type": "DayOfWeek", "name": "Friday" },
+      { "@type": "DayOfWeek", "name": "Saturday" },
+      { "@type": "DayOfWeek", "name": "Sunday" }
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://twitter.com/manaseerzelectric",
+    "https://github.com/zexc66/manaseerz-website"
+  ]
+}
