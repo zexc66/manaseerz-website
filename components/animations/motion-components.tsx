@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useMotionValue, useInView } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 interface ParallaxSectionProps {
   children: React.ReactNode;
@@ -162,36 +163,20 @@ interface TextRevealProps {
 export function TextReveal({ text, className, delay = 0 }: TextRevealProps) {
   const words = text.split(' ');
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { delay: i * 0.05 + delay, duration: 0.5 },
-    }),
-  };
-
-  const child = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
-
   return (
     <motion.div
-      variants={container}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      animate="visible"
       className={cn('flex flex-wrap', className)}
     >
       {words.map((word, index) => (
-        <motion.span variants={child} key={index} className="mr-1">
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: index * 0.05 + delay }}
+          className="mr-1"
+        >
           {word}
         </motion.span>
       ))}
@@ -210,39 +195,19 @@ export function StaggerChildren({
   className,
   staggerDelay = 0.1,
 }: StaggerChildrenProps) {
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: staggerDelay,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
-
   return (
     <motion.div
-      variants={container}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      animate="visible"
       className={className}
     >
       {React.Children.map(children, (child, index) => (
-        <motion.div key={index} variants={item}>
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * staggerDelay + 0.3 }}
+        >
           {child}
         </motion.div>
       ))}

@@ -1,4 +1,4 @@
-const eslintConfig = defineConfig([
+const eslintConfig = [
   {
     ignores: [
       ".next/**",
