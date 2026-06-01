@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import './design-tokens.css';
 import './layout-system.css';
+import './animation-system.css';
 import { StructuredData } from '@/components/structured-data';
 
 export const metadata: Metadata = {
