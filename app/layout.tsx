@@ -6,6 +6,7 @@ import './design-tokens.css';
 import './layout-system.css';
 import './animation-system.css';
 import { StructuredData } from '@/components/structured-data';
+import { WebVitals } from '@/components/performance/web-vitals';
 
 export const metadata: Metadata = {
   title: 'Manaseerz Electric | DFW Premier Electrical Specialists',
@@ -72,12 +73,43 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
+
+        {/* Performance: Preconnect to critical domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+        {/* Performance: Preload critical fonts - Subset to essential weights */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap"
+          as="style"
+        />
+
         <StructuredData />
+
+        {/* Performance: Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                      console.log('[SW] Registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                      console.log('[SW] Registration failed:', error);
+                    });
+                });
+              }
+            `,
+          }}
+        />
       </head>
       <body className="antialiased">
         {children}
+        <WebVitals />
         <Analytics />
         <SpeedInsights />
       </body>
