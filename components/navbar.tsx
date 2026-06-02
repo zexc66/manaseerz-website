@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Phone, Menu, X } from '@/lib/icons';
 import { useState, useEffect } from 'react';
 import { smoothScroll, cn } from '@/lib/utils';
+import { Logo } from '@/components/logo';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,27 +39,10 @@ export function Navbar() {
             : 'bg-transparent'
         )}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center gap-3"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold-primary)]">
-                <Zap className="h-6 w-6 text-[var(--color-black-pure)]" />
-              </div>
-              <div>
-                <h1 className="font-display text-xl font-bold text-[var(--color-text-primary)]">
-                  MANASEERZ
-                </h1>
-                <p className="text-xs text-[var(--color-gold-primary)]">
-                  ELECTRIC
-                </p>
-              </div>
-            </motion.div>
+         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+           <div className="flex h-20 items-center justify-between">
+             {/* Logo */}
+             <Logo size="md" showText={true} />
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">

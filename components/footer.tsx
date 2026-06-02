@@ -1,30 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, ArrowRight, Zap } from '@/lib/icons';
+import { Phone, Mail, MapPin, Clock, ArrowRight } from '@/lib/icons';
 import { contactInfo, cities } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { Logo } from '@/components/logo';
 
 export function Footer() {
   return (
     <footer className="bg-[var(--color-black-rich)] border-t border-[var(--color-surface-800)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid gap-12 lg:grid-cols-4">
-          {/* Brand */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold-primary)]">
-                <Zap className="h-6 w-6 text-[var(--color-black-pure)]" />
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-bold text-[var(--color-text-primary)]">
-                  MANASEERZ
-                </h3>
-                <p className="text-sm text-[var(--color-gold-primary)]">
-                  ELECTRIC
-                </p>
-              </div>
-            </div>
+         <div className="grid gap-12 lg:grid-cols-4">
+           {/* Brand */}
+           <div className="lg:col-span-2 space-y-6">
+             <Logo size="lg" showText={true} className="mb-4" />
             <p className="max-w-md text-[var(--color-text-secondary)] leading-relaxed">
               Licensed electrical specialists serving the Dallas-Fort Worth Metroplex.
               Quality work, transparent pricing, professional results.
