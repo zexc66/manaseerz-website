@@ -37,19 +37,6 @@ export function Logo({ className, showText = true, size = 'md' }: LogoProps) {
             height={sizes[size].height}
             priority
             className="object-contain"
-            onError={(e) => {
-              // Fallback if logo not found
-              console.error('Logo failed to load:', e);
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              const fallback = target.parentElement?.querySelector('.logo-fallback');
-              if (fallback) {
-                (fallback as HTMLElement).style.display = 'flex';
-              }
-            }}
-            onLoad={() => {
-              console.log('Logo loaded successfully');
-            }}
           />
 
           {/* Fallback if image doesn't load */}
