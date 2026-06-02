@@ -89,7 +89,7 @@ export function Services() {
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className="h-16 w-16 rounded-2xl bg-[var(--color-gold-primary)]/10 flex items-center justify-center mb-6 group-hover:bg-[var(--color-gold-primary)]/15 transition-colors duration-300"
                     >
-                      <service.icon className="h-8 w-8 text-[var(--color-gold-primary)]" />
+                      <Zap className="h-8 w-8 text-[var(--color-gold-primary)]" />
                     </motion.div>
 
                     {/* Title */}

@@ -261,7 +261,7 @@ export function Hero() {
 
                       <div className="relative z-10">
                         <div className="h-8 w-8 rounded-lg bg-[var(--color-gold-primary)]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                          <service.icon className="h-4 w-4 text-[var(--color-gold-primary)]" />
+                          <div className="h-4 w-4 bg-[var(--color-gold-primary)]/50" />
                         </div>
                         <div className="font-medium text-sm text-[var(--color-text-primary)]">
                           {service.title}
