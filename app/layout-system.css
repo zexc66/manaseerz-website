@@ -1,0 +1,364 @@
+/* Layout & Spacing System - Manaseerz Electric */
+
+:root {
+  /* ===== SPACING SCALE (4pt base, semantic naming) ===== */
+  
+  /* Base scale - 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192 */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+
+  /* Semantic spacing names */
+  --space-xs: var(--space-1);      /* 4px - micro spacing */
+  --space-sm: var(--space-2);      /* 8px - tight grouping */
+  --space-md: var(--space-3);      /* 12px - default gap */
+  --space-lg: var(--space-4);      /* 16px - comfortable */
+  --space-xl: var(--space-5);      /* 24px - section internal */
+  --space-2xl: var(--space-6);     /* 32px - generous */
+  --space-3xl: var(--space-7);     /* 48px - section spacing */
+  --space-4xl: var(--space-8);     /* 64px - major section */
+  --space-5xl: var(--space-9);     /* 96px - hero spacing */
+  --space-6xl: var(--space-10);    /* 128px - page margins */
+  --space-7xl: var(--space-11);    /* 192px - fullscreen */
+
+  /* Fluid spacing with clamp() - breathing room on large screens */
+  --space-fluid-sm: clamp(var(--space-2), 2vw, var(--space-4));
+  --space-fluid-md: clamp(var(--space-3), 3vw, var(--space-5));
+  --space-fluid-lg: clamp(var(--space-4), 4vw, var(--space-7));
+  --space-fluid-xl: clamp(var(--space-5), 5vw, var(--space-9));
+  --space-fluid-2xl: clamp(var(--space-7), 6vw, var(--space-10));
+
+  /* ===== CONTAINER WIDTHS ===== */
+  
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+
+  /* Fluid container with max-width */
+  --container-prose: min(100%, calc(100% - 2 * var(--space-5)));
+  --container-prose-max: var(--max-width-body); /* 65ch */
+
+  /* ===== GRID SYSTEM ===== */
+  
+  /* Fixed grid columns */
+  --grid-cols-2: repeat(2, 1fr);
+  --grid-cols-3: repeat(3, 1fr);
+  --grid-cols-4: repeat(4, 1fr);
+  --grid-cols-6: repeat(6, 1fr);
+  --grid-cols-12: repeat(12, 1fr);
+
+  /* Auto-fit responsive grid (breakpoint-free) */
+  --grid-auto-fit: repeat(auto-fit, minmax(280px, 1fr));
+  --grid-auto-fit-sm: repeat(auto-fit, minmax(240px, 1fr));
+  --grid-auto-fit-lg: repeat(auto-fit, minmax(320px, 1fr));
+
+  /* Grid gaps by intent */
+  --grid-gap-tight: var(--space-sm);      /* 8px - dense content */
+  --grid-gap-default: var(--space-md);   /* 12px - standard */
+  --grid-gap-comfortable: var(--space-lg); /* 16px - relaxed */
+  --grid-gap-generous: var(--space-xl);   /* 24px - spacious */
+
+  /* ===== LAYOUT PATTERNS ===== */
+  
+  /* Stack pattern - vertical rhythm */
+  --stack-gap-tight: var(--space-sm);
+  --stack-gap-default: var(--space-md);
+  --stack-gap-generous: var(--space-xl);
+
+  /* Grid pattern - responsive card layouts */
+  --grid-gap-card: var(--space-lg);
+  --grid-min-card: 280px;
+
+  /* Section padding - vertical rhythm */
+  --section-padding-y: clamp(var(--space-7), 8vw, var(--space-9)); /* 48-96px */
+  --section-padding-y-lg: clamp(var(--space-9), 10vw, var(--space-11)); /* 96-192px */
+  --section-padding-x: var(--space-5); /* 24px mobile */
+
+  /* ===== COMPONENT SPACING ===== */
+  
+  /* Button padding by size */
+  --btn-padding-sm: var(--space-2) var(--space-3);
+  --btn-padding-md: var(--space-3) var(--space-5);
+  --btn-padding-lg: var(--space-4) var(--space-7);
+
+  /* Input padding */
+  --input-padding: var(--space-3) var(--space-4);
+
+  /* Card padding */
+  --card-padding-sm: var(--space-4);
+  --card-padding-md: var(--space-5);
+  --card-padding-lg: var(--space-7);
+
+  /* Modal padding */
+  --modal-padding: var(--space-6);
+  --modal-header-padding: var(--space-5);
+
+  /* ===== CONTENT WIDTHS ===== */
+  
+  --max-width-caption: 40ch;
+  --max-width-body: 65ch;
+  --max-width-heading: 75ch;
+  --max-width-hero: 85ch;
+
+  /* ===== MARGIN PATTERNS ===== */
+  
+  /* Vertical spacing for sections */
+  --section-margin-top: var(--space-7);
+  --section-margin-bottom: var(--space-7);
+  --section-margin-lg-top: var(--space-9);
+  --section-margin-lg-bottom: var(--space-9);
+
+  /* Horizontal centering max-widths */
+  --centered-container: calc(var(--container-xl) + 2 * var(--space-6));
+
+  /* ===== RESPONSIVE BREAKPOINTS ===== */
+  
+  /* Breakpoints for reference (used in media queries) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ===== ASPECT RATIOS ===== */
+  
+  --aspect-square: 1 / 1;
+  --aspect-landscape: 16 / 9;
+  --aspect-portrait: 9 / 16;
+  --aspect-video: 16 / 10;
+  --aspect-cover: 3 / 2;
+}
+
+/* ===== LAYOUT UTILITY CLASSES ===== */
+
+/* Container utilities */
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+  max-width: var(--container-xl);
+}
+
+.container-sm {
+  max-width: var(--container-md);
+}
+
+.container-lg {
+  max-width: var(--container-2xl);
+}
+
+.container-prose {
+  max-width: var(--container-prose-max);
+}
+
+/* Grid utilities */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: var(--grid-auto-fit);
+  gap: var(--grid-gap-default);
+}
+
+.grid-auto-fit-sm {
+  display: grid;
+  grid-template-columns: var(--grid-auto-fit-sm);
+  gap: var(--grid-gap-tight);
+}
+
+.grid-auto-fit-lg {
+  display: grid;
+  grid-template-columns: var(--grid-auto-fit-lg);
+  gap: var(--grid-gap-comfortable);
+}
+
+/* Stack utilities */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap-default);
+}
+
+.stack-tight {
+  gap: var(--stack-gap-tight);
+}
+
+.stack-generous {
+  gap: var(--stack-gap-generous);
+}
+
+/* Section utilities */
+.section {
+  padding-block: var(--section-padding-y);
+}
+
+.section-lg {
+  padding-block: var(--section-padding-y-lg);
+}
+
+.section-bottom-only {
+  padding-bottom: var(--section-padding-y);
+}
+
+/* Content width utilities */
+.prose {
+  max-width: var(--max-width-body);
+}
+
+.prose-wide {
+  max-width: var(--max-width-heading);
+}
+
+.prose-narrow {
+  max-width: var(--max-width-caption);
+}
+
+/* Center utilities */
+.center-content {
+  display: grid;
+  place-items: center;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* Gap utilities */
+.gap-tight { gap: var(--space-sm); }
+.gap-default { gap: var(--space-md); }
+.gap-comfortable { gap: var(--space-lg); }
+.gap-generous { gap: var(--space-xl); }
+
+.gap-x-tight { column-gap: var(--space-sm); }
+.gap-y-tight { row-gap: var(--space-sm); }
+.gap-x-default { column-gap: var(--space-md); }
+.gap-y-default { row-gap: var(--space-md); }
+
+/* Spacing utilities */
+.mt-section { margin-top: var(--section-margin-top); }
+.mb-section { margin-bottom: var(--section-margin-bottom); }
+.my-section { margin-block: var(--section-margin-top); }
+
+.mt-section-lg { margin-top: var(--section-margin-lg-top); }
+.mb-section-lg { margin-bottom: var(--section-margin-lg-bottom); }
+.my-section-lg { margin-block: var(--section-margin-lg-top); }
+
+/* ===== RESPONSIVE LAYOUT ===== */
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+  
+  .section {
+    padding-block: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-7);
+  }
+  
+  .section {
+    padding-block: var(--space-9);
+  }
+}
+
+/* ===== LAYOUT COMPONENTS ===== */
+
+/* 2-column asymmetric layout */
+.layout-asymmetric-2-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .layout-asymmetric-2-col {
+    grid-template-columns: 3fr 2fr;
+  }
+  
+  .layout-asymmetric-2-col.reverse {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+
+/* 3-column layout with emphasis on center */
+.layout-3-col-emphasized {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .layout-3-col-emphasized {
+    grid-template-columns: 1fr 1.5fr 1fr;
+  }
+}
+
+/* Hero layout */
+.layout-hero {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding-block: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .layout-hero {
+    min-height: 90dvh;
+    padding-block: var(--space-9);
+  }
+}
+
+/* Feature grid with varied spans */
+.layout-feature-grid {
+  display: grid;
+  gap: var(--grid-gap-card);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .layout-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .feature-emphasis {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+/* ===== CONTAINER QUERIES (future-proof) ===== */
+@container (min-width: 640px) {
+  .container-query-sm {
+    /* Component-specific responsive behavior */
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+  }
+}
