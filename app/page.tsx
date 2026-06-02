@@ -13,6 +13,7 @@ import { Footer } from '@/components/footer';
 import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
 import { Chatbot } from '@/components/chatbot';
+import { LazyWrapper, LazyPortfolio, LazyTestimonials, LazyFAQ, LazyAboutSection, LazyEnhancedContactForm } from '@/components/performance/lazy-components';
 
 export default function HomePage() {
   return (
@@ -22,13 +23,23 @@ export default function HomePage() {
         <Hero />
         <Services />
         <WhyChooseUs />
-        <Portfolio />
+        <LazyWrapper>
+          <LazyPortfolio />
+        </LazyWrapper>
         <ServiceAreas />
         <ReviewSystem />
-        <Testimonials />
-        <AboutSection />
-        <FAQ />
-        <EnhancedContactForm />
+        <LazyWrapper>
+          <LazyTestimonials />
+        </LazyWrapper>
+        <LazyWrapper>
+          <LazyAboutSection />
+        </LazyWrapper>
+        <LazyWrapper>
+          <LazyFAQ />
+        </LazyWrapper>
+        <LazyWrapper>
+          <LazyEnhancedContactForm />
+        </LazyWrapper>
         <Footer />
         <Toaster />
         <Chatbot />
