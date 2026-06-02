@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { services, whyChooseUs } from '@/lib/data';
 import { Zap, Lamp, Home, Plug, Hammer, Wind, ShieldCheck, Clock, Map, Star, ArrowRight } from '@/lib/icons';
