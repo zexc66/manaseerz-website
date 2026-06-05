@@ -15,6 +15,7 @@ import { Toaster } from '@/components/toaster';
 import { Chatbot } from '@/components/chatbot';
 import { LazyWrapper, LazyPortfolio, LazyTestimonials, LazyFAQ, LazyAboutSection, LazyEnhancedContactForm } from '@/components/performance/lazy-components';
 import { ScrollProgress } from '@/components/cinematic/scroll-animations';
+import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
         <Navbar />
         <Hero />
         <Services />
+        <QuoteCalculator />
         <WhyChooseUs />
         <LazyWrapper>
           <LazyPortfolio />
