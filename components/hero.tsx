@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { services, whyChooseUs } from '@/lib/data';

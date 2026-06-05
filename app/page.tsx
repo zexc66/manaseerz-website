@@ -14,11 +14,13 @@ import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
 import { Chatbot } from '@/components/chatbot';
 import { LazyWrapper, LazyPortfolio, LazyTestimonials, LazyFAQ, LazyAboutSection, LazyEnhancedContactForm } from '@/components/performance/lazy-components';
+import { ScrollProgress } from '@/components/cinematic/scroll-animations';
 
 export default function HomePage() {
   return (
     <AppWrapper>
       <main className="min-h-screen">
+        <ScrollProgress />
         <Navbar />
         <Hero />
         <Services />
