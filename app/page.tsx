@@ -16,38 +16,54 @@ import { Chatbot } from '@/components/chatbot';
 import { LazyWrapper, LazyPortfolio, LazyTestimonials, LazyFAQ, LazyAboutSection, LazyEnhancedContactForm } from '@/components/performance/lazy-components';
 import { ScrollProgress } from '@/components/cinematic/scroll-animations';
 import { QuoteCalculator } from '@/components/interactive/quote-calculator';
+import { PageLoadChoreography, PremiumSuspense } from '@/components/cinematic/premium-interactions';
 
 export default function HomePage() {
   return (
     <AppWrapper>
-      <main className="min-h-screen">
-        <ScrollProgress />
-        <Navbar />
-        <Hero />
-        <Services />
-        <QuoteCalculator />
-        <WhyChooseUs />
-        <LazyWrapper>
-          <LazyPortfolio />
-        </LazyWrapper>
-        <ServiceAreas />
-        <ReviewSystem />
-        <LazyWrapper>
-          <LazyTestimonials />
-        </LazyWrapper>
-        <LazyWrapper>
-          <LazyAboutSection />
-        </LazyWrapper>
-        <LazyWrapper>
-          <LazyFAQ />
-        </LazyWrapper>
-        <LazyWrapper>
-          <LazyEnhancedContactForm />
-        </LazyWrapper>
-        <Footer />
-        <Toaster />
-        <Chatbot />
-      </main>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      <ScrollProgress />
+      <PageLoadChoreography>
+        <main id="main-content" className="min-h-screen">
+          <Navbar />
+          <Hero />
+          <Services />
+          <QuoteCalculator />
+          <WhyChooseUs />
+          <PremiumSuspense>
+            <LazyWrapper>
+              <LazyPortfolio />
+            </LazyWrapper>
+          </PremiumSuspense>
+          <ServiceAreas />
+          <ReviewSystem />
+          <PremiumSuspense>
+            <LazyWrapper>
+              <LazyTestimonials />
+            </LazyWrapper>
+          </PremiumSuspense>
+          <PremiumSuspense>
+            <LazyWrapper>
+              <LazyAboutSection />
+            </LazyWrapper>
+          </PremiumSuspense>
+          <PremiumSuspense>
+            <LazyWrapper>
+              <LazyFAQ />
+            </LazyWrapper>
+          </PremiumSuspense>
+          <PremiumSuspense>
+            <LazyWrapper>
+              <LazyEnhancedContactForm />
+            </LazyWrapper>
+          </PremiumSuspense>
+          <Footer />
+          <Toaster />
+          <Chatbot />
+        </main>
+      </PageLoadChoreography>
     </AppWrapper>
   );
 }
