@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { MapPin, CheckCircle, Phone, Mail } from 'lucide-react';
+import { MapPin, CheckCircle, Phone, Mail, ArrowRight } from 'lucide-react';
 import { cities, contactInfo } from '@/lib/data';
+import { citiesData } from '@/lib/cities-data';
 import { cn } from '@/lib/utils';
 
 // DFW metroplex cities with coordinates (simplified)
@@ -201,7 +203,7 @@ export function ServiceAreas() {
               <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
                 All Served Cities
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {cities.map((city) => (
                   <button
                     key={city}
@@ -216,6 +218,23 @@ export function ServiceAreas() {
                     {city}
                   </button>
                 ))}
+              </div>
+              <div className="pt-4 border-t border-[var(--color-surface-800)]">
+                <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-3">
+                  Dedicated City Pages
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {citiesData.map((city) => (
+                    <Link
+                      key={city.slug}
+                      href={`/${city.slug}`}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-[var(--color-text-secondary)] hover:text-[var(--color-gold-primary)] hover:bg-[var(--color-surface-800)] rounded-md transition-colors"
+                    >
+                      {city.name}
+                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100" />
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -238,13 +257,30 @@ function CityDetail({ city }: { city: string }) {
           <div className="h-12 w-12 rounded-xl bg-[var(--color-gold-primary)] flex items-center justify-center flex-shrink-0">
             <MapPin className="h-6 w-6 text-[var(--color-black-pure)]" />
           </div>
-          <div>
-            <h3 className="text-2xl font-display font-semibold text-[var(--color-text-primary)]">
-              {city}, TX
-            </h3>
-            <p className="text-[var(--color-text-secondary)] mt-1">
-              {city === contactInfo.baseLocation ? 'Our Base Location' : 'Fully Serviced Area'}
-            </p>
+          <div className="flex-1">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h3 className="text-2xl font-display font-semibold text-[var(--color-text-primary)]">
+                  {city}, TX
+                </h3>
+                <p className="text-[var(--color-text-secondary)] mt-1">
+                  {city === contactInfo.baseLocation ? 'Our Base Location' : 'Fully Serviced Area'}
+                </p>
+              </div>
+              {(() => {
+                const cityData = citiesData.find((c) => c.name === city);
+                if (!cityData) return null;
+                return (
+                  <Link
+                    href={`/${cityData.slug}`}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-[var(--color-gold-primary)] border border-[var(--color-gold-muted)] rounded-md hover:bg-[var(--color-gold-primary)] hover:text-[var(--color-black-pure)] transition-colors whitespace-nowrap"
+                  >
+                    City Page
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                );
+              })()}
+            </div>
           </div>
         </div>
       </div>

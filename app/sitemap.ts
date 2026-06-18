@@ -1,7 +1,15 @@
 import { MetadataRoute } from 'next';
+import { citiesData } from '@/lib/cities-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://manaseerz-web.vercel.app';
+
+  const cityPages: MetadataRoute.Sitemap = citiesData.map((city) => ({
+    url: `${baseUrl}/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }));
 
   return [
     {
@@ -64,5 +72,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    ...cityPages,
   ];
 }
