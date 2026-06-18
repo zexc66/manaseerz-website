@@ -18,6 +18,7 @@ import { ScrollProgress } from '@/components/cinematic/scroll-animations';
 import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 import { PageLoadChoreography, PremiumSuspense } from '@/components/cinematic/premium-interactions';
 import { CommandPalette } from '@/components/cinematic/command-palette';
+import { BackToTop } from '@/components/cinematic/back-to-top';
 
 export default function HomePage() {
   return (
@@ -76,6 +77,7 @@ export default function HomePage() {
           <Footer />
           <Toaster />
           <Chatbot />
+          <BackToTop />
         </main>
       </PageLoadChoreography>
     </AppWrapper>
