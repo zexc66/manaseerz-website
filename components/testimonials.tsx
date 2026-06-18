@@ -6,7 +6,7 @@ import { testimonials } from '@/lib/data';
 
 export function Testimonials() {
   return (
-    <section id="reviews" className="py-24 bg-[var(--color-black-rich)]">
+    <section id="testimonials" className="py-24 bg-[var(--color-black-rich)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

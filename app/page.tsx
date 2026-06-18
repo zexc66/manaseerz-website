@@ -41,17 +41,13 @@ export default function HomePage() {
             <QuoteCalculator />
           </div>
           <WhyChooseUs />
-          <div id="portfolio">
-            <PremiumSuspense>
-              <LazyWrapper>
-                <LazyPortfolio />
-              </LazyWrapper>
-            </PremiumSuspense>
-          </div>
+          <PremiumSuspense>
+            <LazyWrapper>
+              <LazyPortfolio />
+            </LazyWrapper>
+          </PremiumSuspense>
           <ServiceAreas />
-          <div id="reviews">
-            <ReviewSystem />
-          </div>
+          <ReviewSystem />
           <PremiumSuspense>
             <LazyWrapper>
               <LazyTestimonials />
@@ -67,13 +63,11 @@ export default function HomePage() {
               <LazyFAQ />
             </LazyWrapper>
           </PremiumSuspense>
-          <div id="contact">
-            <PremiumSuspense>
-              <LazyWrapper>
-                <LazyEnhancedContactForm />
-              </LazyWrapper>
-            </PremiumSuspense>
-          </div>
+          <PremiumSuspense>
+            <LazyWrapper>
+              <LazyEnhancedContactForm />
+            </LazyWrapper>
+          </PremiumSuspense>
           <Footer />
           <Toaster />
           <Chatbot />
