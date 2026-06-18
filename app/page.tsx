@@ -17,6 +17,7 @@ import { LazyWrapper, LazyPortfolio, LazyTestimonials, LazyFAQ, LazyAboutSection
 import { ScrollProgress } from '@/components/cinematic/scroll-animations';
 import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 import { PageLoadChoreography, PremiumSuspense } from '@/components/cinematic/premium-interactions';
+import { CommandPalette } from '@/components/cinematic/command-palette';
 
 export default function HomePage() {
   return (
@@ -25,20 +26,31 @@ export default function HomePage() {
         Skip to main content
       </a>
       <ScrollProgress />
+      <CommandPalette />
       <PageLoadChoreography>
         <main id="main-content" className="min-h-screen">
           <Navbar />
-          <Hero />
-          <Services />
-          <QuoteCalculator />
+          <div id="hero">
+            <Hero />
+          </div>
+          <div id="services">
+            <Services />
+          </div>
+          <div id="quote">
+            <QuoteCalculator />
+          </div>
           <WhyChooseUs />
-          <PremiumSuspense>
-            <LazyWrapper>
-              <LazyPortfolio />
-            </LazyWrapper>
-          </PremiumSuspense>
+          <div id="portfolio">
+            <PremiumSuspense>
+              <LazyWrapper>
+                <LazyPortfolio />
+              </LazyWrapper>
+            </PremiumSuspense>
+          </div>
           <ServiceAreas />
-          <ReviewSystem />
+          <div id="reviews">
+            <ReviewSystem />
+          </div>
           <PremiumSuspense>
             <LazyWrapper>
               <LazyTestimonials />
@@ -54,11 +66,13 @@ export default function HomePage() {
               <LazyFAQ />
             </LazyWrapper>
           </PremiumSuspense>
-          <PremiumSuspense>
-            <LazyWrapper>
-              <LazyEnhancedContactForm />
-            </LazyWrapper>
-          </PremiumSuspense>
+          <div id="contact">
+            <PremiumSuspense>
+              <LazyWrapper>
+                <LazyEnhancedContactForm />
+              </LazyWrapper>
+            </PremiumSuspense>
+          </div>
           <Footer />
           <Toaster />
           <Chatbot />
