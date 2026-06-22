@@ -23,6 +23,8 @@ import { TrustShowcase } from '@/components/interactive/trust-showcase';
 import { GEOQuestions } from '@/components/interactive/geo-questions';
 import { evChargerGeoQuestions, panelUpgradeGeoQuestions } from '@/lib/geo-data';
 import { MultiStepBooking } from '@/components/interactive/multi-step-booking';
+import { PhotoQuoteStub } from '@/components/interactive/photo-quote-stub';
+import { ExitIntentModal } from '@/components/interactive/exit-intent-modal';
 
 export default function HomePage() {
   return (
@@ -51,6 +53,7 @@ export default function HomePage() {
             title="DFW Electrical Cost & Service Questions"
             subtitle="Direct answers homeowners ask before booking — sourced from 500+ DFW installations"
           />
+          <PhotoQuoteStub />
           <PremiumSuspense>
             <LazyWrapper>
               <LazyPortfolio />
@@ -83,6 +86,7 @@ export default function HomePage() {
           <Toaster />
           <Chatbot />
           <BackToTop />
+          <ExitIntentModal />
         </main>
       </PageLoadChoreography>
     </AppWrapper>
