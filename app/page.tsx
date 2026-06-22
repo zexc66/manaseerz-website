@@ -22,6 +22,7 @@ import { BackToTop } from '@/components/cinematic/back-to-top';
 import { TrustShowcase } from '@/components/interactive/trust-showcase';
 import { GEOQuestions } from '@/components/interactive/geo-questions';
 import { evChargerGeoQuestions, panelUpgradeGeoQuestions } from '@/lib/geo-data';
+import { MultiStepBooking } from '@/components/interactive/multi-step-booking';
 
 export default function HomePage() {
   return (
@@ -77,6 +78,7 @@ export default function HomePage() {
               <LazyEnhancedContactForm />
             </LazyWrapper>
           </PremiumSuspense>
+          <MultiStepBooking />
           <Footer />
           <Toaster />
           <Chatbot />

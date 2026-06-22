@@ -1,4 +1,4 @@
-export { Zap, Lamp, Home, Plug, Hammer, Wind, ShieldCheck, Clock, Map, Star, ArrowRight, Phone, Mail, CheckCircle2, Sparkles, Menu, X, ChevronDown } from 'lucide-react';
+export { Zap, Lamp, Home, Plug, Hammer, Wind, ShieldCheck, Clock, Map, Star, ArrowRight, Phone, Mail, CheckCircle2, Sparkles, Menu, X, ChevronDown, ChevronLeft, Check, Calendar, User, AlertTriangle } from 'lucide-react';
 
 export function MapPin({ className }: { className?: string }) {
   return (
