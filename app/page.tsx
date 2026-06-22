@@ -20,6 +20,8 @@ import { PageLoadChoreography, PremiumSuspense } from '@/components/cinematic/pr
 import { CommandPalette } from '@/components/cinematic/command-palette';
 import { BackToTop } from '@/components/cinematic/back-to-top';
 import { TrustShowcase } from '@/components/interactive/trust-showcase';
+import { GEOQuestions } from '@/components/interactive/geo-questions';
+import { evChargerGeoQuestions, panelUpgradeGeoQuestions } from '@/lib/geo-data';
 
 export default function HomePage() {
   return (
@@ -43,6 +45,11 @@ export default function HomePage() {
           </div>
           <WhyChooseUs />
           <TrustShowcase />
+          <GEOQuestions
+            items={[...evChargerGeoQuestions.slice(0, 2), ...panelUpgradeGeoQuestions.slice(0, 2)]}
+            title="DFW Electrical Cost & Service Questions"
+            subtitle="Direct answers homeowners ask before booking — sourced from 500+ DFW installations"
+          />
           <PremiumSuspense>
             <LazyWrapper>
               <LazyPortfolio />
