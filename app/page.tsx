@@ -17,6 +17,7 @@ import { ScrollProgress } from '@/components/cinematic/scroll-animations';
 import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 import { PageLoadChoreography } from '@/components/cinematic/premium-interactions';
 import { BackToTop } from '@/components/cinematic/back-to-top';
+import { WhatsAppButton } from '@/components/whatsapp-button';
 
 export default function HomePage() {
   return (
@@ -49,6 +50,7 @@ export default function HomePage() {
           <Toaster />
           <Chatbot />
           <BackToTop />
+          <WhatsAppButton />
         </main>
       </PageLoadChoreography>
     </AppWrapper>
