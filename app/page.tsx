@@ -34,7 +34,6 @@ export default function HomePage() {
         Skip to main content
       </a>
       <ScrollProgress />
-      <CommandPalette />
       <PageLoadChoreography>
         <main id="main-content" className="min-h-screen">
           <Navbar />
@@ -48,19 +47,6 @@ export default function HomePage() {
             <QuoteCalculator />
           </div>
           <WhyChooseUs />
-          <ErrorBoundary label="TrustShowcase">
-            <TrustShowcase />
-          </ErrorBoundary>
-          <ErrorBoundary label="GEOQuestions">
-            <GEOQuestions
-              items={[...evChargerGeoQuestions.slice(0, 2), ...panelUpgradeGeoQuestions.slice(0, 2)]}
-              title="DFW Electrical Cost & Service Questions"
-              subtitle="Direct answers homeowners ask before booking — sourced from 500+ DFW installations"
-            />
-          </ErrorBoundary>
-          <ErrorBoundary label="PhotoQuote">
-            <PhotoQuoteStub />
-          </ErrorBoundary>
           <PremiumSuspense>
             <LazyWrapper>
               <LazyPortfolio />
@@ -88,16 +74,10 @@ export default function HomePage() {
               <LazyEnhancedContactForm />
             </LazyWrapper>
           </PremiumSuspense>
-          <ErrorBoundary label="MultiStepBooking">
-            <MultiStepBooking />
-          </ErrorBoundary>
           <Footer />
           <Toaster />
           <Chatbot />
           <BackToTop />
-          <ErrorBoundary label="ExitIntentModal">
-            <ExitIntentModal />
-          </ErrorBoundary>
         </main>
       </PageLoadChoreography>
     </AppWrapper>
