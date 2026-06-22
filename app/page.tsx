@@ -13,19 +13,10 @@ import { Footer } from '@/components/footer';
 import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
 import { Chatbot } from '@/components/chatbot';
-import { LazyWrapper, LazyPortfolio, LazyTestimonials, LazyFAQ, LazyAboutSection, LazyEnhancedContactForm } from '@/components/performance/lazy-components';
 import { ScrollProgress } from '@/components/cinematic/scroll-animations';
 import { QuoteCalculator } from '@/components/interactive/quote-calculator';
-import { PageLoadChoreography, PremiumSuspense } from '@/components/cinematic/premium-interactions';
-import { CommandPalette } from '@/components/cinematic/command-palette';
+import { PageLoadChoreography } from '@/components/cinematic/premium-interactions';
 import { BackToTop } from '@/components/cinematic/back-to-top';
-import { ErrorBoundary } from '@/components/cinematic/error-boundary';
-import { TrustShowcase } from '@/components/interactive/trust-showcase';
-import { GEOQuestions } from '@/components/interactive/geo-questions';
-import { evChargerGeoQuestions, panelUpgradeGeoQuestions } from '@/lib/geo-data';
-import { MultiStepBooking } from '@/components/interactive/multi-step-booking';
-import { PhotoQuoteStub } from '@/components/interactive/photo-quote-stub';
-import { ExitIntentModal } from '@/components/interactive/exit-intent-modal';
 
 export default function HomePage() {
   return (
@@ -47,33 +38,13 @@ export default function HomePage() {
             <QuoteCalculator />
           </div>
           <WhyChooseUs />
-          <PremiumSuspense>
-            <LazyWrapper>
-              <LazyPortfolio />
-            </LazyWrapper>
-          </PremiumSuspense>
+          <Portfolio />
           <ServiceAreas />
           <ReviewSystem />
-          <PremiumSuspense>
-            <LazyWrapper>
-              <LazyTestimonials />
-            </LazyWrapper>
-          </PremiumSuspense>
-          <PremiumSuspense>
-            <LazyWrapper>
-              <LazyAboutSection />
-            </LazyWrapper>
-          </PremiumSuspense>
-          <PremiumSuspense>
-            <LazyWrapper>
-              <LazyFAQ />
-            </LazyWrapper>
-          </PremiumSuspense>
-          <PremiumSuspense>
-            <LazyWrapper>
-              <LazyEnhancedContactForm />
-            </LazyWrapper>
-          </PremiumSuspense>
+          <Testimonials />
+          <AboutSection />
+          <FAQ />
+          <EnhancedContactForm />
           <Footer />
           <Toaster />
           <Chatbot />
