@@ -24,7 +24,16 @@ export function ExitIntentModal({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const lastShown = sessionStorage.getItem(storageKey);
+    if (typeof document === 'undefined') return;
+    if (typeof window.matchMedia !== 'function') return;
+    if (typeof window.sessionStorage === 'undefined') return;
+
+    let lastShown: string | null = null;
+    try {
+      lastShown = sessionStorage.getItem(storageKey);
+    } catch {
+      return;
+    }
     if (lastShown) {
       const hoursSince = (Date.now() - parseInt(lastShown, 10)) / (1000 * 60 * 60);
       if (hoursSince < cooldownHours) {
@@ -33,7 +42,12 @@ export function ExitIntentModal({
       }
     }
 
-    let isMobile = window.matchMedia('(max-width: 768px)').matches;
+    let isMobile = false;
+    try {
+      isMobile = window.matchMedia('(max-width: 768px)').matches;
+    } catch {
+      isMobile = false;
+    }
 
     const handleMouseLeave = (e: MouseEvent) => {
       if (hasShown || isMobile) return;
@@ -58,7 +72,11 @@ export function ExitIntentModal({
       if (hasShown) return;
       setIsOpen(true);
       setHasShown(true);
-      sessionStorage.setItem(storageKey, Date.now().toString());
+      try {
+        sessionStorage.setItem(storageKey, Date.now().toString());
+      } catch {
+        /* ignore quota errors */
+      }
     };
 
     const checkMobile = () => {

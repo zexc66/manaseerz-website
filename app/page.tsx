@@ -19,6 +19,7 @@ import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 import { PageLoadChoreography, PremiumSuspense } from '@/components/cinematic/premium-interactions';
 import { CommandPalette } from '@/components/cinematic/command-palette';
 import { BackToTop } from '@/components/cinematic/back-to-top';
+import { ErrorBoundary } from '@/components/cinematic/error-boundary';
 import { TrustShowcase } from '@/components/interactive/trust-showcase';
 import { GEOQuestions } from '@/components/interactive/geo-questions';
 import { evChargerGeoQuestions, panelUpgradeGeoQuestions } from '@/lib/geo-data';
@@ -47,13 +48,19 @@ export default function HomePage() {
             <QuoteCalculator />
           </div>
           <WhyChooseUs />
-          <TrustShowcase />
-          <GEOQuestions
-            items={[...evChargerGeoQuestions.slice(0, 2), ...panelUpgradeGeoQuestions.slice(0, 2)]}
-            title="DFW Electrical Cost & Service Questions"
-            subtitle="Direct answers homeowners ask before booking — sourced from 500+ DFW installations"
-          />
-          <PhotoQuoteStub />
+          <ErrorBoundary label="TrustShowcase">
+            <TrustShowcase />
+          </ErrorBoundary>
+          <ErrorBoundary label="GEOQuestions">
+            <GEOQuestions
+              items={[...evChargerGeoQuestions.slice(0, 2), ...panelUpgradeGeoQuestions.slice(0, 2)]}
+              title="DFW Electrical Cost & Service Questions"
+              subtitle="Direct answers homeowners ask before booking — sourced from 500+ DFW installations"
+            />
+          </ErrorBoundary>
+          <ErrorBoundary label="PhotoQuote">
+            <PhotoQuoteStub />
+          </ErrorBoundary>
           <PremiumSuspense>
             <LazyWrapper>
               <LazyPortfolio />
@@ -81,12 +88,16 @@ export default function HomePage() {
               <LazyEnhancedContactForm />
             </LazyWrapper>
           </PremiumSuspense>
-          <MultiStepBooking />
+          <ErrorBoundary label="MultiStepBooking">
+            <MultiStepBooking />
+          </ErrorBoundary>
           <Footer />
           <Toaster />
           <Chatbot />
           <BackToTop />
-          <ExitIntentModal />
+          <ErrorBoundary label="ExitIntentModal">
+            <ExitIntentModal />
+          </ErrorBoundary>
         </main>
       </PageLoadChoreography>
     </AppWrapper>
