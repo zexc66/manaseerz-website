@@ -19,6 +19,7 @@ import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 import { PageLoadChoreography, PremiumSuspense } from '@/components/cinematic/premium-interactions';
 import { CommandPalette } from '@/components/cinematic/command-palette';
 import { BackToTop } from '@/components/cinematic/back-to-top';
+import { TrustShowcase } from '@/components/interactive/trust-showcase';
 
 export default function HomePage() {
   return (
@@ -41,6 +42,7 @@ export default function HomePage() {
             <QuoteCalculator />
           </div>
           <WhyChooseUs />
+          <TrustShowcase />
           <PremiumSuspense>
             <LazyWrapper>
               <LazyPortfolio />
