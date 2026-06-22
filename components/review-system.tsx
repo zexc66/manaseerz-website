@@ -13,7 +13,7 @@ const sampleReviews = [
     rating: 5,
     date: '2024-01-15',
     text: 'Absolutely exceptional service! Faris installed a stunning chandelier in our dining room. Professional, punctual, and the work was flawless. Highly recommend!',
-    photos: ['/placeholder-review-1.jpg', '/placeholder-review-2.jpg'],
+    photos: ['/testimonials/customer-1.svg', '/testimonials/customer-2.svg'],
     project: 'Chandelier Installation',
     verified: true,
   },
