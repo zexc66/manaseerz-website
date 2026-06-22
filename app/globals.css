@@ -296,6 +296,98 @@ body {
   box-sizing: border-box;
 }
 
+/* ===== 2026 CSS FEATURES (progressive enhancement) ===== */
+
+/* Scroll-driven animations (Chrome 115+, Firefox 142+) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal {
+      animation: scroll-fade-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 50%;
+    }
+
+    .scroll-reveal-up {
+      animation: scroll-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+
+    .scroll-scale-in {
+      animation: scroll-scale linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+
+    @keyframes scroll-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scroll-rise {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scroll-scale {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  }
+}
+
+/* Native anchor positioning for tooltips/popovers (Chrome 125+) */
+@supports (position-anchor: --anchor) {
+  .anchor-tooltip {
+    position-anchor: --anchor-el;
+    position-area: top;
+    margin-bottom: 8px;
+  }
+}
+
+/* Premium text wrapping (Chrome 114+, Safari 17.5+) */
+@supports (text-wrap: balance) {
+  h1, h2, h3, .balance-text {
+    text-wrap: balance;
+  }
+}
+
+@supports (text-wrap: pretty) {
+  p, li, .pretty-text {
+    text-wrap: pretty;
+  }
+}
+
+/* @starting-style for enter transitions (Chrome 117+) */
+@supports (transition-behavior: allow-discrete) {
+  [data-enter] {
+    transition: opacity 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+    transition-behavior: allow-discrete;
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+}
+
+/* Sticky header scroll-state (Chrome 135+) */
+@supports (animation-timeline: scroll()) {
+  .sticky-header {
+    animation: sticky-shadow linear;
+    animation-timeline: scroll(root);
+    animation-range: 0 80px;
+  }
+
+  @keyframes sticky-shadow {
+    to {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+
 /* Focus States */
 :focus-visible {
   outline: 2px solid var(--color-gold-primary);
