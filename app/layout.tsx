@@ -52,6 +52,7 @@ export const metadata: Metadata = {
     description: 'Licensed electrical specialists serving DFW. Same-day & next-day available.',
     creator: '@manaseerzelectric',
   },
+  // verification: { google: '<add-google-search-console-code>' },
   robots: {
     index: true,
     follow: true,
@@ -62,9 +63,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
 };
 
