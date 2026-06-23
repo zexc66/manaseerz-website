@@ -19,7 +19,7 @@ export function Navbar() {
 
   const navLinks = [
     { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#projects' },
+    { label: 'Projects', href: '#portfolio' },
     { label: 'Reviews', href: '#reviews' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
@@ -166,7 +166,9 @@ export function Navbar() {
         )}
       </motion.nav>
 
-      {/* Mobile Sticky CTA */}
+      {/* Mobile Sticky CTA — sits above the chatbot launcher
+          (bottom-right) so the two no longer overlap. WhatsApp lives
+          bottom-left, so the full mobile contact layout is balanced. */}
       <motion.a
         href="tel:6824515951"
         initial={{ y: 100 }}
@@ -174,7 +176,7 @@ export function Navbar() {
         transition={{ delay: 0.8, duration: 0.5, ease: "easeOut" }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-4 right-4 z-[var(--z-sticky)] lg:hidden rounded-full bg-[var(--color-gold-primary)] p-4 shadow-[var(--shadow-gold)]"
+        className="fixed bottom-24 right-4 z-[var(--z-sticky)] lg:hidden rounded-full bg-[var(--color-gold-primary)] p-4 shadow-[var(--shadow-gold)]"
         aria-label="Call now"
       >
         <Phone className="h-6 w-6 text-[var(--color-black-pure)]" />

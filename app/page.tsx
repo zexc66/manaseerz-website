@@ -11,6 +11,7 @@ import { Footer } from '@/components/footer';
 import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
 import { Chatbot } from '@/components/chatbot';
+import { WhatsAppButton } from '@/components/whatsapp-button';
 
 export default function HomePage() {
   return (
@@ -30,6 +31,7 @@ export default function HomePage() {
         <Footer />
         <Toaster />
         <Chatbot />
+        <WhatsAppButton />
       </main>
     </AppWrapper>
   );
