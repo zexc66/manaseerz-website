@@ -1,8 +1,26 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
+import { Space_Grotesk, Outfit } from 'next/font/google';
 import './globals.css';
 import { StructuredData } from '@/components/structured-data';
+
+// Self-hosted fonts via next/font — eliminates the render-blocking Google Fonts
+// @import chain (globals.css) and the fonts.gstatic.com third-party requests.
+// Fonts are inlined, preloaded, cached, and add zero render-blocking CSS.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Manaseerz Electric | DFW Premier Electrical Specialists',
@@ -56,12 +74,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${spaceGrotesk.variable} ${outfit.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icon-192.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <StructuredData />
       </head>
       <body className="antialiased">
