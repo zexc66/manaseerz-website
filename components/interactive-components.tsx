@@ -2,19 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { X, ArrowRight, Phone, Mail, MapPin, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Phone, MapPin, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import {
   trackCTAClick,
   trackPageView,
-  trackConversion,
   useScrollDepthTracking,
   useTimeOnPage,
 } from '@/lib/analytics';
 import {
   SkipNavigation,
   useKeyboardNavigation,
-  AccessibleModal,
   LiveRegion,
 } from '@/components/accessibility';
 
@@ -33,19 +32,23 @@ export function BeforeAfter({
 
   return (
     <div className={cn("relative overflow-hidden rounded-xl", className)}>
-      <img
+      <Image
         src={before}
         alt={`${label} before`}
-        className="absolute inset-0 w-full h-full object-cover"
+        fill
+        sizes="100vw"
+        className="object-cover"
       />
       <div
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `polygon(${position}% 0, 100% 0, 100% 100%, ${position}% 100%)` }}
       >
-        <img
+        <Image
           src={after}
           alt={`${label} after`}
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
       </div>
       <div

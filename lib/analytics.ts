@@ -2,17 +2,23 @@
 
 import { useEffect } from 'react';
 
+declare global {
+  interface Window {
+    gtag?: (command: string, ...args: unknown[]) => void;
+  }
+}
+
 // Custom event tracking
-export function trackEvent(eventName: string, properties?: Record<string, any>) {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', eventName, properties);
+export function trackEvent(eventName: string, properties?: Record<string, unknown>) {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', eventName, properties);
   }
 }
 
 // Page view tracking
 export function trackPageView(page: string, title: string) {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', 'page_view', {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'page_view', {
       page_title: title,
       page_path: page,
     });

@@ -318,13 +318,11 @@ export function TypingEffect({
   className = '',
   typingSpeed = 100,
   deletingSpeed = 50,
-  pauseDuration = 2000,
 }: {
   words: string[];
   className?: string;
   typingSpeed?: number;
   deletingSpeed?: number;
-  pauseDuration?: number;
 }) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');

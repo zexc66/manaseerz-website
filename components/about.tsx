@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShieldCheck, Clock, Award, Zap, Users, MapPin } from 'lucide-react';
+import { ShieldCheck, Clock, Award } from 'lucide-react';
 
 export function About() {
   return (

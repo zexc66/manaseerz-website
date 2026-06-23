@@ -164,7 +164,7 @@ export function ServiceAreas() {
                         Serving 16+ Cities
                       </h3>
                       <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                        We're proud to serve communities throughout the Dallas-Fort Worth metroplex.
+                        We&apos;re proud to serve communities throughout the Dallas-Fort Worth metroplex.
                         Click on any city marker to learn more about services in your area.
                       </p>
                     </div>

@@ -69,7 +69,7 @@ export function ContactForm() {
                 Get Your Free Quote
               </h2>
               <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
-                Fill out the form and we'll respond within a few hours. Licensed & Insured electrical specialists ready to help.
+                Fill out the form and we&apos;ll respond within a few hours. Licensed & Insured electrical specialists ready to help.
               </p>
             </motion.div>
 

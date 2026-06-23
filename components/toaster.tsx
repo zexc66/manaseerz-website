@@ -34,7 +34,9 @@ export function showToast(toast: Omit<Toast, 'id'>) {
 }
 
 export function removeToast(id: string) {
-  // Implementation would be handled by toast state
+  // Toast dismissal is handled by the Toaster component's local state.
+  // This stub is kept as part of the public API; the id is intentionally unused.
+  void id;
 }
 
 export function Toaster() {

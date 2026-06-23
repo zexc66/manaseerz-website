@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { ShieldCheck, Clock, MapPin, Award, Users, Zap } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 export function AboutSection() {
   const missionPoints = [
@@ -51,7 +50,7 @@ export function AboutSection() {
             Why Choose Manaseerz Electric?
           </h2>
           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            We're not just another electrical service company. We're your trusted partners in electrical excellence.
+            We&apos;re not just another electrical service company. We&apos;re your trusted partners in electrical excellence.
           </p>
         </motion.div>
 

@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Filter, Image as ImageIcon, ArrowRight, ZoomIn } from 'lucide-react';
+import { Image as ImageIcon, ArrowRight, ZoomIn } from 'lucide-react';
+import Image from 'next/image';
 import { services } from '@/lib/data';
 import { cn } from '@/lib/utils';
 
@@ -494,12 +495,13 @@ function PortfolioCard({ project, index, onClick }: { project: typeof portfolioI
     >
       <div className="relative overflow-hidden rounded-2xl bg-[var(--color-surface-900)]/50 border border-[var(--color-surface-800)]">
         {/* Image */}
-        <div className="aspect-[4/3] overflow-hidden bg-[var(--color-surface-900)]">
-          <img
+        <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-900)]">
+          <Image
             src={project.thumbnail || project.image}
             alt={project.title}
-            loading="lazy"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
 
@@ -563,12 +565,13 @@ function ProjectModal({ project, onClose }: { project: typeof portfolioItems[0];
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
           {/* Project Image */}
-          <div className="aspect-video rounded-xl overflow-hidden mb-6">
-            <img
+          <div className="relative aspect-video rounded-xl overflow-hidden mb-6">
+            <Image
               src={project.image}
               alt={project.title}
-              loading="lazy"
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 80vw"
+              className="object-cover"
             />
           </div>
 

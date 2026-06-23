@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import type { LucideIcon } from 'lucide-react';
 import { services, whyChooseUs } from '@/lib/data';
 import { Zap, Lamp, Home, Plug, Hammer, Wind, ShieldCheck, Clock, Map, Star, ArrowRight } from '@/lib/icons';
 import { cn } from '@/lib/utils';
@@ -74,7 +75,7 @@ export function Hero() {
               transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
             >
               <h1 className="font-display font-bold text-[var(--text-4xl)] sm:text-[var(--text-6xl)] lg:text-[var(--text-7xl)] leading-[1.08] tracking-tight">
-                DFW's Premier
+                DFW&apos;s Premier
                 <span className="block text-[var(--color-gold-primary)]">
                   Electrical Specialists
                 </span>
@@ -303,10 +304,10 @@ export function WhyChooseUs() {
           >
             <div>
               <h2 className="font-display text-4xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
-                The Standard Others Don't Meet
+                The Standard Others Don&apos;t Meet
               </h2>
               <p className="mt-6 text-lg text-[var(--color-text-secondary)] leading-relaxed">
-                We're not handymen. We're licensed electrical professionals who take pride in every connection, every install, every job.
+                We&apos;re not handymen. We&apos;re licensed electrical professionals who take pride in every connection, every install, every job.
               </p>
             </div>
 
@@ -338,7 +339,7 @@ export function WhyChooseUs() {
                 </div>
               </div>
               <p className="text-[var(--color-text-secondary)]">
-                "I stand behind every project we undertake. Quality work, transparent pricing, and professional results — that's the Manaseerz promise."
+                &quot;I stand behind every project we undertake. Quality work, transparent pricing, and professional results — that&apos;s the Manaseerz promise.&quot;
               </p>
             </div>
           </motion.div>
@@ -382,7 +383,7 @@ export function WhyChooseUs() {
   );
 }
 
-function WhyChooseCard({ title, description, icon }: { title: string; description: string; icon: any }) {
+function WhyChooseCard({ title, description, icon }: { title: string; description: string; icon: LucideIcon }) {
   return (
     <div className="flex gap-4">
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gold-primary)]/10 text-[var(--color-gold-primary)]">
@@ -401,7 +402,7 @@ function WhyChooseCard({ title, description, icon }: { title: string; descriptio
 }
 
 function ServiceIcon({ icon, className }: { icon: string; className?: string }) {
-  const icons: Record<string, any> = {
+  const icons: Record<string, LucideIcon> = {
     lamp: Lamp,
     zap: Zap,
     home: Home,

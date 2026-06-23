@@ -20,7 +20,7 @@ export function Testimonials() {
             What People Say
           </h2>
           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            Don't just take our word for it — hear from our satisfied clients across the DFW metroplex.
+            Don&apos;t just take our word for it — hear from our satisfied clients across the DFW metroplex.
           </p>
         </motion.div>
 

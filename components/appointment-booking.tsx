@@ -8,14 +8,11 @@ import { trackConversion, trackCTAClick } from '@/lib/analytics';
 import { toast } from '@/components/toaster';
 import {
   format,
-  addDays,
   startOfWeek,
   endOfWeek,
   eachDayOfInterval,
   isSameDay,
   isBefore,
-  isAfter,
-  parseISO,
 } from 'date-fns';
 
 // Available time slots
@@ -47,19 +44,6 @@ export function AppointmentBooking() {
     notes: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const currentWeekStart = startOfWeek(new Date());
-  const weekDates = eachDayOfInterval({
-    start: currentWeekStart,
-    end: endOfWeek(currentWeekStart),
-  });
-
-  const isToday = (date: Date) => isSameDay(date, new Date());
-  const isPast = (date: Date) => isBefore(date, new Date());
-  const isWeekend = (date: Date) => {
-    const day = date.getDay();
-    return day === 0 || day === 6;
-  };
 
   const handleNextStep = () => {
     switch (step) {
@@ -93,7 +77,7 @@ export function AppointmentBooking() {
       toast.success('Appointment Booked!', 'We\'ll send you a confirmation shortly.');
 
       setStep('confirmation');
-    } catch (error) {
+    } catch {
       toast.error('Booking Failed', 'Please try again or call us directly.');
     } finally {
       setIsSubmitting(false);
@@ -114,7 +98,7 @@ export function AppointmentBooking() {
             Book Your Appointment
           </h2>
           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            Schedule your electrical service online. We'll confirm your appointment within 24 hours.
+            Schedule your electrical service online. We&apos;ll confirm your appointment within 24 hours.
           </p>
         </motion.div>
 
@@ -306,7 +290,6 @@ function CalendarSelection({
     end: endOfWeek(currentWeekStart),
   });
 
-  const isToday = (date: Date) => isSameDay(date, new Date());
   const isPast = (date: Date) => isBefore(date, new Date());
   const isWeekend = (date: Date) => {
     const day = date.getDay();
@@ -618,7 +601,7 @@ function Confirmation({
       </h3>
 
       <p className="text-lg text-[var(--color-text-secondary)] mb-8">
-        We'll send a confirmation email to {details.formData.email}
+        We&apos;ll send a confirmation email to {details.formData.email}
       </p>
 
       <div className="bg-[var(--color-surface-800)] rounded-xl p-6 text-left space-y-4 mb-8">

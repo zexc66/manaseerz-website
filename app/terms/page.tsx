@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Scale, Users, ShieldCheck, AlertTriangle, Clock } from 'lucide-react';
 
 export default function TermsPage() {
   return (
@@ -26,7 +25,7 @@ export default function TermsPage() {
               </h2>
               <div className="bg-[var(--color-surface-900)]/50 border border-[var(--color-surface-800)] rounded-xl p-6">
                 <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                  By accessing or using Manaseerz Electric's services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+                  By accessing or using Manaseerz Electric&apos;s services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
                 </p>
               </div>
             </section>

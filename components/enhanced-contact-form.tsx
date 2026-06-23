@@ -30,7 +30,7 @@ export function EnhancedContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
     reset,
     watch,
   } = useForm<ContactFormData>({
@@ -208,7 +208,7 @@ export function EnhancedContactForm() {
                   className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 flex items-center gap-3"
                 >
                   <CheckCircle className="h-5 w-5 flex-shrink-0" />
-                  <p>Thank you! Your request has been submitted. We'll contact you within 24 hours.</p>
+                  <p>Thank you! Your request has been submitted. We&apos;ll contact you within 24 hours.</p>
                 </motion.div>
               )}
 
@@ -478,7 +478,7 @@ export function EnhancedContactForm() {
               {/* Privacy Notice */}
               <p className="text-xs text-center text-[var(--color-text-muted)]">
                 By submitting, you agree to our <a href="#" className="text-[var(--color-gold-primary)] hover:underline">Privacy Policy</a>.
-                We'll never share your information.
+                We&apos;ll never share your information.
               </p>
             </form>
           </motion.div>

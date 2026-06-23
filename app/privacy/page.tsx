@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShieldCheck, Eye, AlertTriangle, Clock, Lock, User } from 'lucide-react';
 
 export default function PrivacyPage() {
   const lastUpdated = 'January 1, 2024';

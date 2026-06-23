@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ThumbsUp, MessageSquare, Camera } from 'lucide-react';
+import { Star, ThumbsUp, Camera } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const sampleReviews = [
@@ -149,7 +149,7 @@ export function ReviewSystem() {
               key={filter.id}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => setSelectedFilter(filter.id as any)}
+              onClick={() => setSelectedFilter(filter.id as 'all' | 'verified' | 'recent' | 'highest')}
               className={cn(
                 "px-4 py-2 rounded-lg text-sm font-medium transition-all",
                 selectedFilter === filter.id

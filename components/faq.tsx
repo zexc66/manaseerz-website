@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ChevronDown } from 'lucide-react';
 
 const faqData = [
   {
@@ -75,7 +74,7 @@ export function FAQ() {
           </h2>
           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about our services, pricing, and availability.
-            Can't find your answer? <a href="#contact" className="text-[var(--color-gold-primary)] hover:underline">Contact us directly</a>.
+            Can&apos;t find your answer? <a href="#contact" className="text-[var(--color-gold-primary)] hover:underline">Contact us directly</a>.
           </p>
         </motion.div>
 

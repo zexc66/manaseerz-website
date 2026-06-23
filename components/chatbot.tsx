@@ -2,11 +2,10 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MessageSquare, Send, Minimize2, Maximize2, Phone, Mail, Calendar, CheckCircle, ExternalLink, ChevronUp, ChevronDown } from 'lucide-react';
+import { X, MessageSquare, Send, Phone, Calendar, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { toast } from '@/components/toaster';
 import { trackCTAClick, trackConversion } from '@/lib/analytics';
-import { services, testimonials, cities, contactInfo, whyChooseUs } from '@/lib/data';
+import { services, testimonials, cities } from '@/lib/data';
 
 // Chat message interface
 interface Message {
@@ -392,8 +391,8 @@ function calculateSimilarity(text: string, pattern: RegExp): number {
 }
 
 // Find best matching intent
-function findBestIntent(userMessage: string): { intent: string; confidence: number; category?: string; details?: any } | null {
-  let bestMatch: { intent: string; confidence: number; category?: string; details?: any } = { intent: 'general', confidence: 0 };
+function findBestIntent(userMessage: string): { intent: string; confidence: number; category?: string } | null {
+  let bestMatch: { intent: string; confidence: number; category?: string } = { intent: 'general', confidence: 0 };
 
   for (const [category, patterns] of Object.entries(intentPatterns)) {
     for (const pattern of patterns) {
@@ -408,8 +407,8 @@ function findBestIntent(userMessage: string): { intent: string; confidence: numb
 }
 
 // Get contextual response based on intent
-function getContextualResponse(intent: string, userMessage: string, context: any): string | null {
-  const { services: knowledgeServices, testimonials, faqs, company, contact, booking, pricing, serviceAreas, testimonials: knowledgeReviews } = knowledgeBase;
+function getContextualResponse(intent: string, userMessage: string): string | null {
+  const { services: knowledgeServices, company, contact, serviceAreas, testimonials: knowledgeReviews } = knowledgeBase;
 
   switch (intent) {
     case 'pricing':
@@ -417,9 +416,6 @@ function getContextualResponse(intent: string, userMessage: string, context: any
         userMessage.toLowerCase().includes(s.title.toLowerCase().split(' ').slice(-1)[0]?.replace('?', ''))
       );
       if (serviceMentioned) {
-        const servicePricing = pricing.find((p) =>
-          p.service.toLowerCase().includes(serviceMentioned.title.toLowerCase())
-        );
         return `Our ${serviceMentioned.title} ranges from ${serviceMentioned.priceRange}. Factors include: project complexity, materials, and urgency. Would you like a detailed quote?`;
       }
       return `Our services range from $100 (outlets) to $3,000 (full renovations). We provide free quotes with transparent pricing. What service are you interested in?`;
@@ -504,50 +500,15 @@ export function Chatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Handle quick reply
-  const handleQuickReply = useCallback((reply: string, action?: 'book' | 'contact' | 'call' | 'navigate' | 'schedule') => {
-    addUserMessage(reply, action);
-    setShowQuickReplies(false);
-
-    setTimeout(() => {
-      setShowQuickReplies(true);
-    }, 2000);
-  }, []);
-
-  // Add user message
-  const addUserMessage = useCallback((content: string, action?: 'book' | 'contact' | 'call' | 'navigate' | 'schedule') => {
-    const newMessage: Message = {
-      id: Date.now().toString(),
-      role: 'user',
-      content,
-      timestamp: new Date(),
-      action,
-    };
-
-    setMessages((prev) => [...prev, newMessage]);
-
-    if (action) {
-      trackConversion('form_submission', action);
-    }
-
-    setIsTyping(false);
-    setInputValue('');
-
-    // Process user message
-    setTimeout(() => {
-      processUserMessage(content, action);
-    }, 600);
-  }, []);
-
   // Process user message and generate response
-  const processUserMessage = useCallback(async (content: string, action?: string) => {
+  const processUserMessage = useCallback(async (content: string) => {
     const userMessage = content.toLowerCase().trim();
     const intentMatch = findBestIntent(userMessage);
 
     let response: string;
 
     if (intentMatch) {
-      response = getContextualResponse(intentMatch.intent, userMessage, knowledgeBase) || '';
+      response = getContextualResponse(intentMatch.intent, userMessage) || '';
       trackConversion('form_submission', 'Chatbot - Intent Matched');
     } else if (content.includes('thank')) {
       response = "You're welcome! Is there anything else I can help you with?";
@@ -575,13 +536,48 @@ export function Chatbot() {
       setQuickReplies(relevantQuickReplies);
       setShowQuickReplies(true);
     }
-  }, [knowledgeBase]);
+  }, []);
+
+  // Add user message
+  const addUserMessage = useCallback((content: string, action?: 'book' | 'contact' | 'call' | 'navigate' | 'schedule') => {
+    const newMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content,
+      timestamp: new Date(),
+      action,
+    };
+
+    setMessages((prev) => [...prev, newMessage]);
+
+    if (action) {
+      trackConversion('form_submission', action);
+    }
+
+    setIsTyping(false);
+    setInputValue('');
+
+    // Process user message
+    setTimeout(() => {
+      processUserMessage(content);
+    }, 600);
+  }, [processUserMessage]);
+
+  // Handle quick reply
+  const handleQuickReply = useCallback((reply: string, action?: 'book' | 'contact' | 'call' | 'navigate' | 'schedule') => {
+    addUserMessage(reply, action);
+    setShowQuickReplies(false);
+
+    setTimeout(() => {
+      setShowQuickReplies(true);
+    }, 2000);
+  }, [addUserMessage]);
 
   // Get appropriate quick replies based on context
-  function getQuickReplies(intent: string | null, context: any): string[] {
+  function getQuickReplies(intent: string | null, context: typeof knowledgeBase): string[] {
     if (!intent) return [];
 
-    const { knowledgeServices: contextServices, pricing, testimonials: contextReviews, contact, serviceAreas: contextAreas, faqs } = context;
+    const { services: contextServices, serviceAreas: contextAreas } = context;
 
     switch (intent) {
       case 'pricing':
@@ -599,10 +595,10 @@ export function Chatbot() {
         ];
 
       case 'services':
-        return contextServices.slice(0, 4).map((s: any) => s.name);
+        return contextServices.slice(0, 4).map((s) => s.name);
 
       case 'areas':
-        return contextAreas.slice(0, 4).map((a: any) => a.name);
+        return contextAreas.slice(0, 4).map((a) => a.name);
 
       case 'credentials':
         return [
@@ -680,8 +676,8 @@ export function Chatbot() {
   }
 
   // Get general response for unmatched queries
-  function getGeneralResponse(userMessage: string, context: any): string {
-    const { knowledgeServices, faqs, contact, company, serviceAreas, testimonials: contextReviews } = context;
+  function getGeneralResponse(userMessage: string, context: typeof knowledgeBase): string {
+    const { faqs, contact, company, serviceAreas, testimonials: contextReviews } = context;
 
     // Check for specific keyword matches
     if (userMessage.includes('hello') || userMessage.includes('hi') || userMessage.includes('hey')) {
@@ -701,7 +697,7 @@ export function Chatbot() {
     }
 
     if (userMessage.includes('area') || userMessage.includes('city') || userMessage.includes('where') || userMessage.includes('served')) {
-      return `We serve the entire DFW metroplex, including: ${serviceAreas.slice(0, 6).map((a: any) => a.name).join(', ')}. We offer same-day and next-day service. Which city are you in?`;
+      return `We serve the entire DFW metroplex, including: ${serviceAreas.slice(0, 6).map((a) => a.name).join(', ')}. We offer same-day and next-day service. Which city are you in?`;
     }
 
     if (userMessage.includes('service') || userMessage.includes('offer') || userMessage.includes('provide')) {
@@ -729,9 +725,9 @@ export function Chatbot() {
     }
 
     // Find relevant FAQ
-    const relevantFaq = faqs.find((faq: any) =>
+    const relevantFaq = faqs.find((faq) =>
       userMessage.toLowerCase().includes(faq.question.toLowerCase().split(' ').slice(-3).join(' ')) ||
-      faq.description.toLowerCase().includes(userMessage.toLowerCase()) ||
+      faq.answer.toLowerCase().includes(userMessage.toLowerCase()) ||
       faq.category.toLowerCase().includes(userMessage.toLowerCase())
     );
 
@@ -769,11 +765,6 @@ export function Chatbot() {
   const closeChat = () => {
     setIsOpen(false);
     setIsMinimized(false);
-  };
-
-  const toggleMinimize = () => {
-    setIsMinimized(!isMinimized);
-    trackCTAClick('Chatbot - Toggle Minimize', 'Chatbot');
   };
 
   return (

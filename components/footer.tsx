@@ -1,9 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, ArrowRight, Zap } from '@/lib/icons';
 import { contactInfo, cities } from '@/lib/data';
-import { cn } from '@/lib/utils';
 
 export function Footer() {
   return (
