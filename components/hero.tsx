@@ -63,8 +63,8 @@ export function Hero() {
           >
             {/* Tag */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
             >
               <div className="inline-flex items-center gap-2 rounded-full bg-[var(--color-gold-primary)]/10 border border-[var(--color-gold-primary)]/20 px-4 py-2 text-sm font-medium text-[var(--color-gold-primary)]">
@@ -91,8 +91,8 @@ export function Hero() {
 
             {/* Trust Metrics */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
               className="flex flex-wrap gap-10 pt-4"
             >
@@ -103,8 +103,8 @@ export function Hero() {
               ].map((metric) => (
                 <motion.div
                   key={metric.label}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ scale: 0.95 }}
+                  animate={{ scale: 1 }}
                   transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
                   className="flex items-center gap-4"
                 >
@@ -125,8 +125,8 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
               className="flex flex-col sm:flex-row gap-4"
             >
@@ -160,20 +160,20 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Service Preview */}
+          {/* Right Column - Service Preview.
+              No opacity in `initial` (only the x slide) — same reason as the
+              left column: a parent/card opacity:0 would gate these large cards
+              and register as a late LCP candidate. */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ x: 50 }}
+            animate={{ x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative"
           >
             <div className="grid gap-4 sm:grid-cols-2">
-              {services.slice(0, 4).map((service, index) => (
+              {services.slice(0, 4).map((service) => (
                 <motion.div
                   key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.5, ease: "easeOut" }}
                   whileHover={{ y: -4 }}
                   className="group rounded-2xl border border-[var(--color-surface-800)] bg-[var(--color-surface-900)]/50 p-6 transition-all hover:border-[var(--color-gold-primary)] hover:shadow-[var(--shadow-gold)]"
                 >
