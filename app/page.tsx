@@ -18,6 +18,7 @@ import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 import { PageLoadChoreography } from '@/components/cinematic/premium-interactions';
 import { BackToTop } from '@/components/cinematic/back-to-top';
 import { WhatsAppButton } from '@/components/whatsapp-button';
+import { Deferred } from '@/components/performance/deferred';
 import { TrustShowcase } from '@/components/interactive/trust-showcase';
 import { GEOQuestions } from '@/components/interactive/geo-questions';
 import { evChargerGeoQuestions, panelUpgradeGeoQuestions } from '@/lib/geo-data';
@@ -61,11 +62,15 @@ export default function HomePage() {
           <EnhancedContactForm />
           <MultiStepBooking />
           <Footer />
-          <Toaster />
-          <Chatbot />
+          <Deferred delay={1500}>
+            <Toaster />
+            <Chatbot />
+          </Deferred>
           <BackToTop />
           <WhatsAppButton />
-          <ExitIntentModal />
+          <Deferred delay={3000}>
+            <ExitIntentModal />
+          </Deferred>
         </main>
       </PageLoadChoreography>
     </AppWrapper>

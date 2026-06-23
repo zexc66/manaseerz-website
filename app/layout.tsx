@@ -6,6 +6,7 @@ import './design-tokens.css';
 import './layout-system.css';
 import './animation-system.css';
 import { StructuredData } from '@/components/structured-data';
+import { Deferred } from '@/components/performance/deferred';
 import { WebVitals } from '@/components/performance/web-vitals';
 
 export const metadata: Metadata = {
@@ -88,30 +89,27 @@ export default function RootLayout({
 
         <StructuredData />
 
-        {/* Performance: Service Worker Registration */}
+        {/* Performance: Service Worker Registration (deferred) */}
         <script
+          defer
           dangerouslySetInnerHTML={{
             __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                  navigator.serviceWorker.register('/sw.js')
-                    .then((registration) => {
-                      console.log('[SW] Registered:', registration.scope);
-                    })
-                    .catch((error) => {
-                      console.log('[SW] Registration failed:', error);
-                    });
-                });
-              }
+              window.addEventListener('load', function() {
+                if ('serviceWorker' in navigator) {
+                  navigator.serviceWorker.register('/sw.js').catch(function(){});
+                }
+              });
             `,
           }}
         />
       </head>
       <body className="antialiased">
         {children}
-        <WebVitals />
-        <Analytics />
-        <SpeedInsights />
+        <Deferred delay={3000}>
+          <WebVitals />
+          <Analytics />
+          <SpeedInsights />
+        </Deferred>
       </body>
     </html>
   );
