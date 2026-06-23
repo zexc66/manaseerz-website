@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Filter, Image as ImageIcon, ArrowRight, ZoomIn } from 'lucide-react';
 import { services } from '@/lib/data';
@@ -495,10 +496,13 @@ function PortfolioCard({ project, index, onClick }: { project: typeof portfolioI
       <div className="relative overflow-hidden rounded-2xl bg-[var(--color-surface-900)]/50 border border-[var(--color-surface-800)]">
         {/* Image */}
         <div className="aspect-[4/3] overflow-hidden bg-[var(--color-surface-900)]">
-          <img
+          <Image
             src={project.thumbnail || project.image}
             alt={project.title}
+            width={400}
+            height={300}
             loading="lazy"
+            unoptimized
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
@@ -563,12 +567,14 @@ function ProjectModal({ project, onClose }: { project: typeof portfolioItems[0];
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
           {/* Project Image */}
-          <div className="aspect-video rounded-xl overflow-hidden mb-6">
-            <img
+          <div className="aspect-video rounded-xl overflow-hidden mb-6 relative">
+            <Image
               src={project.image}
               alt={project.title}
+              fill
               loading="lazy"
-              className="w-full h-full object-cover"
+              unoptimized
+              className="object-cover"
             />
           </div>
 
