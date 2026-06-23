@@ -42,6 +42,7 @@ export function AppointmentBooking() {
     phone: '',
     address: '',
     notes: '',
+    company: '', // honeypot — hidden field bots auto-fill
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -68,8 +69,25 @@ export function AppointmentBooking() {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const res = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          service: serviceTypes.find((s) => s.id === selectedService)?.name || selectedService,
+          date: selectedDate ? format(selectedDate, 'yyyy-MM-dd') : '',
+          time: selectedTime || '',
+          notes: formData.notes,
+          company: formData.company, // honeypot
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Request failed: ${res.status}`);
+      }
 
       // Track conversion
       trackConversion('form_submission', 'Appointment Booking');
@@ -472,6 +490,17 @@ function ContactDetails({
       </h3>
 
       <div className="space-y-4 mb-8">
+        {/* Honeypot field — visually hidden, humans leave it empty */}
+        <input
+          type="text"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          value={formData.company}
+          onChange={(e) => handleChange('company', e.target.value)}
+          className="absolute h-0 w-0 opacity-0 -z-50 pointer-events-none"
+        />
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
@@ -576,6 +605,7 @@ const contactDetailsFormData = {
   phone: '',
   address: '',
   notes: '',
+  company: '', // honeypot
 };
 
 function Confirmation({

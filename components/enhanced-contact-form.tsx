@@ -26,6 +26,9 @@ export function EnhancedContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  // Honeypot: a visually-hidden field humans won't fill, but spam bots
+  // auto-filling all inputs will. Server rejects submissions that include it.
+  const [company, setCompany] = useState('');
 
   const {
     register,
@@ -53,11 +56,26 @@ export function EnhancedContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call - replace with actual form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          city: data.city,
+          service: data.service,
+          message: data.message,
+          // File binaries are not uploaded (would require blob storage);
+          // pass names only so the owner knows what was attached.
+          fileNames: uploadedFiles.map((f) => f.name),
+          company, // honeypot
+        }),
+      });
 
-      // Here you would send data to your backend
-      console.log('Form submitted:', { ...data, files: uploadedFiles });
+      if (!res.ok) {
+        throw new Error(`Request failed: ${res.status}`);
+      }
 
       setSubmitStatus('success');
       reset();
@@ -200,6 +218,17 @@ export function EnhancedContactForm() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              {/* Honeypot field — visually hidden, humans leave it empty */}
+              <input
+                type="text"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                className="absolute h-0 w-0 opacity-0 -z-50 pointer-events-none"
+              />
               {/* Form Status Messages */}
               {submitStatus === 'success' && (
                 <motion.div
