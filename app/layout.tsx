@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Outfit } from 'next/font/google';
 import './globals.css';
 import { StructuredData } from '@/components/structured-data';
+import { FloatingWidgets } from '@/components/floating-widgets';
 
 // Self-hosted fonts via next/font — eliminates the render-blocking Google Fonts
 // @import chain (globals.css) and the fonts.gstatic.com third-party requests.
@@ -78,6 +79,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <FloatingWidgets />
         <Analytics />
         <SpeedInsights />
       </body>

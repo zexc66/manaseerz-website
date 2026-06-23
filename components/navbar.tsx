@@ -18,8 +18,8 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#portfolio' },
+    { label: 'Services', href: '/services' },
+    { label: 'Projects', href: '/projects' },
     { label: 'Reviews', href: '#reviews' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
@@ -67,8 +67,10 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => {
-                    e.preventDefault();
-                    smoothScroll(link.href.slice(1));
+                    if (link.href.startsWith('#')) {
+                      e.preventDefault();
+                      smoothScroll(link.href.slice(1));
+                    }
                   }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -136,8 +138,10 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => {
-                    e.preventDefault();
-                    smoothScroll(link.href.slice(1));
+                    if (link.href.startsWith('#')) {
+                      e.preventDefault();
+                      smoothScroll(link.href.slice(1));
+                    }
                     setIsMobileMenuOpen(false);
                   }}
                   className="block rounded-lg px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-[var(--color-surface-800)] hover:text-[var(--color-gold-primary)]"

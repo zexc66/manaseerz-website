@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { services, whyChooseUs } from '@/lib/data';
@@ -283,9 +284,17 @@ export function Services() {
                   "flex items-center justify-between pt-6 border-t border-[var(--color-surface-800)]",
                   index === 0 ? "pt-8" : ""
                 )}>
-                  <span className="text-sm font-medium text-[var(--color-gold-primary)]">
-                    {service.priceRange}
-                  </span>
+                  <div>
+                    <span className="text-sm font-medium text-[var(--color-gold-primary)]">
+                      {service.priceRange}
+                    </span>
+                    <Link
+                      href={`/services/${service.id}`}
+                      className="mt-1 block text-xs text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-gold-primary)]"
+                    >
+                      Learn more →
+                    </Link>
+                  </div>
                   <button
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                     className="flex items-center gap-2 rounded-full border border-[var(--color-gold-primary)]/40 bg-[var(--color-gold-primary)]/10 px-4 py-2 text-sm font-medium text-[var(--color-gold-primary)] transition-all hover:bg-[var(--color-gold-primary)] hover:text-[var(--color-black-pure)] group-hover:text-[var(--color-gold-primary)]"
