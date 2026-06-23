@@ -50,9 +50,13 @@ export function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column - Content */}
+          {/* Left Column - Content.
+              NOTE: no opacity in `initial` — a parent opacity:0 would keep the
+              whole hero (incl. the LCP subtitle) invisible until JS hydrates.
+              The slide-in transform is fine; only opacity gates LCP. */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-12"
           >
@@ -68,12 +72,11 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* Main Headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            >
+            {/* Main Headline — rendered statically (no entrance animation) so it
+                paints immediately in SSR HTML. It is the page's LCP element;
+                animating it in would gate Largest Contentful Paint on JS
+                download + hydration. Secondary elements still animate. */}
+            <div>
               <h1 className="font-display font-bold text-[var(--text-4xl)] sm:text-[var(--text-6xl)] lg:text-[var(--text-7xl)] leading-[1.08] tracking-tight">
                 DFW&apos;s Premier
                 <span className="block text-[var(--color-gold-primary)]">
@@ -83,7 +86,7 @@ export function Hero() {
               <p className="mt-16 text-[var(--text-xl)] text-[var(--color-text-secondary)] leading-[1.7] max-w-3xl">
                 Precision electrical crafted for excellence. From luxury chandelier installs to complete renovations — handled with licensed precision.
               </p>
-            </motion.div>
+            </div>
 
             {/* Trust Metrics */}
             <motion.div
