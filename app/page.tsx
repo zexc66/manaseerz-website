@@ -12,6 +12,7 @@ import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
 import { Chatbot } from '@/components/chatbot';
 import { WhatsAppButton } from '@/components/whatsapp-button';
+import { BackToTop } from '@/components/back-to-top';
 
 export default function HomePage() {
   return (
@@ -32,6 +33,7 @@ export default function HomePage() {
         <Toaster />
         <Chatbot />
         <WhatsAppButton />
+        <BackToTop />
       </main>
     </AppWrapper>
   );

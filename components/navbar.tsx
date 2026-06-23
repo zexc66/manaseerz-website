@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Menu, X } from '@/lib/icons';
 import { useState, useEffect } from 'react';
 import { smoothScroll, cn } from '@/lib/utils';
@@ -121,13 +121,15 @@ export function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-[var(--color-surface-800)] bg-[var(--color-black-rich)]"
-          >
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              className="lg:hidden overflow-hidden border-t border-[var(--color-surface-800)] bg-[var(--color-black-rich)]"
+            >
             <div className="space-y-2 px-4 py-4">
               {navLinks.map((link) => (
                 <a
@@ -163,7 +165,8 @@ export function Navbar() {
               </div>
             </div>
           </motion.div>
-        )}
+          )}
+        </AnimatePresence>
       </motion.nav>
 
       {/* Mobile Sticky CTA — sits above the chatbot launcher

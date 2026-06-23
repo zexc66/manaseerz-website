@@ -140,6 +140,16 @@ export function Hero() {
               </motion.button>
               <motion.a
                 whileHover={{ scale: 1.02 }}
+                href="https://wa.me/16824515951?text=Hi%20Manaseerz%20Electric!%20I%27d%20like%20a%20quote."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-[#25D366] px-8 py-4 text-base font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_8px_24px_rgba(37,211,102,0.4)] active:scale-[0.98] flex items-center justify-center gap-2"
+              >
+                <WhatsAppGlyph className="h-5 w-5" />
+                WhatsApp
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
                 href="tel:6824515951"
                 className="rounded-lg border-2 border-[var(--color-surface-800)] px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] transition-all hover:border-[var(--color-gold-primary)] hover:text-[var(--color-gold-primary)] flex items-center justify-center gap-2"
               >
@@ -278,7 +288,7 @@ export function Services() {
                   </span>
                   <button
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="flex items-center gap-2 text-sm font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-gold-primary)] transition-colors"
+                    className="flex items-center gap-2 rounded-full border border-[var(--color-gold-primary)]/40 bg-[var(--color-gold-primary)]/10 px-4 py-2 text-sm font-medium text-[var(--color-gold-primary)] transition-all hover:bg-[var(--color-gold-primary)] hover:text-[var(--color-black-pure)] group-hover:text-[var(--color-gold-primary)]"
                   >
                     Get Quote
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -430,6 +440,15 @@ function Phone({ className }: { className?: string }) {
       className={className}
     >
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+// Official WhatsApp glyph (brand green used in the hero CTA).
+function WhatsAppGlyph({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M16.003 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.257.59 4.46 1.71 6.402L3.2 28.8l6.55-1.717a12.72 12.72 0 0 0 6.253 1.592h.005c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.332-6.635-3.75-9.052A12.71 12.71 0 0 0 16.003 3.2zm0 23.04h-.004a10.6 10.6 0 0 1-5.4-1.48l-.387-.23-4.02 1.054 1.073-3.92-.252-.4a10.58 10.58 0 0 1-1.62-5.644c0-5.85 4.76-10.61 10.61-10.61 2.835 0 5.497 1.105 7.5 3.11a10.51 10.51 0 0 1 3.103 7.5c0 5.85-4.76 10.61-10.61 10.61zm5.82-7.93c-.32-.16-1.887-.93-2.177-1.037-.292-.107-.504-.16-.715.16-.21.32-.82 1.037-1.005 1.248-.185.21-.37.237-.685.08-.32-.16-1.35-.498-2.57-1.586-.95-.847-1.59-1.893-1.775-2.213-.185-.32-.02-.493.14-.652.144-.143.32-.37.48-.555.16-.185.21-.32.317-.53.106-.213.053-.398-.027-.558-.08-.16-.715-1.723-.98-2.358-.258-.62-.52-.535-.715-.545l-.61-.01c-.21 0-.555.08-.846.4-.29.32-1.11 1.085-1.11 2.645 0 1.56 1.137 3.066 1.295 3.28.16.21 2.234 3.41 5.41 4.78.756.326 1.346.522 1.806.668.76.24 1.45.207 1.996.126.61-.09 1.887-.77 2.153-1.514.266-.743.266-1.38.186-1.513-.08-.133-.29-.213-.61-.373z" />
     </svg>
   );
 }

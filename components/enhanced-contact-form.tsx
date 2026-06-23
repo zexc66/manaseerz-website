@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Upload, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
-import { cities, contactInfo } from '@/lib/data';
+import { Phone, Mail, MapPin, Clock, Upload, CheckCircle, Loader2, AlertCircle, Star, Quote } from 'lucide-react';
+import { cities, contactInfo, testimonials } from '@/lib/data';
 import { cn } from '@/lib/utils';
 
 // Zod schema for form validation
@@ -33,11 +33,14 @@ export function EnhancedContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields },
     reset,
     watch,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
+    // Validate on blur, then re-validate on every change after first touch —
+    // so users see field feedback as they go, not all-at-once after submit.
+    mode: 'onTouched',
     defaultValues: {
       name: '',
       email: '',
@@ -136,6 +139,45 @@ export function EnhancedContactForm() {
                 Same-day and next-day availability. Licensed, insured, and serving the entire Dallas-Fort Worth Metroplex.
               </p>
             </div>
+
+            {/* Social proof — rating + featured review, shown beside the form
+                to lift conversion. */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex items-center gap-4 rounded-2xl border border-[var(--color-gold-primary)]/20 bg-[var(--color-surface-900)]/50 p-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-gold-primary)]/15">
+                  <Star className="h-6 w-6 fill-[var(--color-gold-primary)] text-[var(--color-gold-primary)]" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-0.5" aria-label="Rated 5.0 out of 5">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} className="h-4 w-4 fill-[var(--color-gold-primary)] text-[var(--color-gold-primary)]" />
+                    ))}
+                  </div>
+                  <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
+                    <span className="font-semibold text-[var(--color-text-primary)]">5.0</span> · 127+ happy customers
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Featured testimonial */}
+            {testimonials[0] && (
+              <figure className="relative rounded-2xl border border-[var(--color-surface-800)] bg-[var(--color-surface-900)]/50 p-6">
+                <Quote className="absolute right-4 top-4 h-8 w-8 text-[var(--color-gold-primary)]/20" />
+                <blockquote className="text-[var(--color-text-secondary)] leading-relaxed">
+                  &ldquo;{testimonials[0].text}&rdquo;
+                </blockquote>
+                <figcaption className="mt-4 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-gold-primary)]/15 text-sm font-bold text-[var(--color-gold-primary)]">
+                    {testimonials[0].name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-[var(--color-text-primary)]">{testimonials[0].name}</p>
+                    <p className="text-xs text-[var(--color-text-muted)]">{testimonials[0].city} · {testimonials[0].project}</p>
+                  </div>
+                </figcaption>
+              </figure>
+            )}
 
             {/* Contact Information */}
             <div className="space-y-6">
@@ -266,7 +308,8 @@ export function EnhancedContactForm() {
                       "w-full px-4 py-3 rounded-lg bg-[var(--color-surface-800)] border border-[var(--color-surface-700)]",
                       "text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)]",
                       "focus:border-[var(--color-gold-primary)] focus:ring-2 focus:ring-[var(--color-gold-primary)]/20 transition-all outline-none",
-                      errors.name && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                      errors.name && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+                      touchedFields.name && !errors.name && "border-green-500/50 focus:border-green-500 focus:ring-green-500/20"
                     )}
                     placeholder="John Doe"
                   />
@@ -291,7 +334,8 @@ export function EnhancedContactForm() {
                         "w-full px-4 py-3 rounded-lg bg-[var(--color-surface-800)] border border-[var(--color-surface-700)]",
                         "text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)]",
                         "focus:border-[var(--color-gold-primary)] focus:ring-2 focus:ring-[var(--color-gold-primary)]/20 transition-all outline-none",
-                        errors.email && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                        errors.email && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+                        touchedFields.email && !errors.email && "border-green-500/50 focus:border-green-500 focus:ring-green-500/20"
                       )}
                       placeholder="john@example.com"
                     />
@@ -315,7 +359,8 @@ export function EnhancedContactForm() {
                         "w-full px-4 py-3 rounded-lg bg-[var(--color-surface-800)] border border-[var(--color-surface-700)]",
                         "text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)]",
                         "focus:border-[var(--color-gold-primary)] focus:ring-2 focus:ring-[var(--color-gold-primary)]/20 transition-all outline-none",
-                        errors.phone && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                        errors.phone && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+                        touchedFields.phone && !errors.phone && "border-green-500/50 focus:border-green-500 focus:ring-green-500/20"
                       )}
                       placeholder="(682) 451-5951"
                     />
@@ -343,7 +388,8 @@ export function EnhancedContactForm() {
                         "w-full px-4 py-3 rounded-lg bg-[var(--color-surface-800)] border border-[var(--color-surface-700)]",
                         "text-[var(--color-text-primary)]",
                         "focus:border-[var(--color-gold-primary)] focus:ring-2 focus:ring-[var(--color-gold-primary)]/20 transition-all outline-none cursor-pointer",
-                        errors.city && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                        errors.city && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+                        touchedFields.city && !errors.city && "border-green-500/50 focus:border-green-500 focus:ring-green-500/20"
                       )}
                     >
                       <option value="">Select your city</option>
@@ -372,7 +418,8 @@ export function EnhancedContactForm() {
                         "w-full px-4 py-3 rounded-lg bg-[var(--color-surface-800)] border border-[var(--color-surface-700)]",
                         "text-[var(--color-text-primary)]",
                         "focus:border-[var(--color-gold-primary)] focus:ring-2 focus:ring-[var(--color-gold-primary)]/20 transition-all outline-none cursor-pointer",
-                        errors.service && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                        errors.service && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+                        touchedFields.service && !errors.service && "border-green-500/50 focus:border-green-500 focus:ring-green-500/20"
                       )}
                     >
                       <option value="">Select service type</option>
@@ -409,7 +456,8 @@ export function EnhancedContactForm() {
                       "w-full px-4 py-3 rounded-lg bg-[var(--color-surface-800)] border border-[var(--color-surface-700)]",
                       "text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] resize-none",
                       "focus:border-[var(--color-gold-primary)] focus:ring-2 focus:ring-[var(--color-gold-primary)]/20 transition-all outline-none",
-                      errors.message && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                      errors.message && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+                      touchedFields.message && !errors.message && "border-green-500/50 focus:border-green-500 focus:ring-green-500/20"
                     )}
                     placeholder="Describe your project, timeline, and any specific requirements..."
                   />
