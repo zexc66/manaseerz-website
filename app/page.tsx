@@ -18,6 +18,12 @@ import { QuoteCalculator } from '@/components/interactive/quote-calculator';
 import { PageLoadChoreography } from '@/components/cinematic/premium-interactions';
 import { BackToTop } from '@/components/cinematic/back-to-top';
 import { WhatsAppButton } from '@/components/whatsapp-button';
+import { TrustShowcase } from '@/components/interactive/trust-showcase';
+import { GEOQuestions } from '@/components/interactive/geo-questions';
+import { evChargerGeoQuestions, panelUpgradeGeoQuestions } from '@/lib/geo-data';
+import { MultiStepBooking } from '@/components/interactive/multi-step-booking';
+import { PhotoQuoteStub } from '@/components/interactive/photo-quote-stub';
+import { ExitIntentModal } from '@/components/interactive/exit-intent-modal';
 
 export default function HomePage() {
   return (
@@ -39,6 +45,13 @@ export default function HomePage() {
             <QuoteCalculator />
           </div>
           <WhyChooseUs />
+          <TrustShowcase />
+          <GEOQuestions
+            items={[...evChargerGeoQuestions.slice(0, 2), ...panelUpgradeGeoQuestions.slice(0, 2)]}
+            title="DFW Electrical Cost & Service Questions"
+            subtitle="Direct answers homeowners ask before booking"
+          />
+          <PhotoQuoteStub />
           <Portfolio />
           <ServiceAreas />
           <ReviewSystem />
@@ -46,11 +59,13 @@ export default function HomePage() {
           <AboutSection />
           <FAQ />
           <EnhancedContactForm />
+          <MultiStepBooking />
           <Footer />
           <Toaster />
           <Chatbot />
           <BackToTop />
           <WhatsAppButton />
+          <ExitIntentModal />
         </main>
       </PageLoadChoreography>
     </AppWrapper>
