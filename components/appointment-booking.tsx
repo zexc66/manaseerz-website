@@ -524,7 +524,7 @@ function ContactDetails({
               value={formData.phone}
               onChange={(e) => handleChange('phone', e.target.value)}
               className="w-full px-4 py-3 rounded-lg bg-[var(--color-surface-800)] border border-[var(--color-surface-700)] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:border-[var(--color-gold-primary)] focus:ring-2 focus:ring-[var(--color-gold-primary)]/20 transition-all outline-none"
-              placeholder="(682) 451-5951"
+              placeholder="+1 (682) 451-5951"
             />
           </div>
         </div>

@@ -13,7 +13,13 @@ import { cn } from '@/lib/utils';
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
-  phone: z.string().regex(/^\(\d{3}\) \d{3}-\d{4}$/, 'Please use format: (682) 451-5951'),
+  phone: z
+    .string()
+    .trim()
+    // Accept any country's phone format: digits, spaces, +, (), -, dots, 7-32 chars.
+    // Mirrors the server-side validation (app/api/contact/route.ts) so client
+    // and server agree. e.g. +1 (682) 451-5951, +44 20 7946 0958, +971 50 123 4567.
+    .regex(/^[\d\s()+\-.]{7,32}$/, 'Please enter a valid phone number, e.g. +1 (682) 451-5951'),
   city: z.string().min(1, 'Please select a city'),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters').max(500, 'Message must be less than 500 characters'),
@@ -362,7 +368,7 @@ export function EnhancedContactForm() {
                         errors.phone && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
                         touchedFields.phone && !errors.phone && "border-green-500/50 focus:border-green-500 focus:ring-green-500/20"
                       )}
-                      placeholder="(682) 451-5951"
+                      placeholder="+1 (682) 451-5951"
                     />
                     {errors.phone && (
                       <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
