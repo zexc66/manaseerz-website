@@ -560,7 +560,7 @@ export function EnhancedContactForm() {
 
               {/* Privacy Notice */}
               <p className="text-xs text-center text-[var(--color-text-muted)]">
-                By submitting, you agree to our <a href="#" className="text-[var(--color-gold-primary)] hover:underline">Privacy Policy</a>.
+                By submitting, you agree to our <a href="/privacy" className="text-[var(--color-gold-primary)] hover:underline">Privacy Policy</a>.
                 We&apos;ll never share your information.
               </p>
             </form>

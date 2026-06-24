@@ -175,6 +175,26 @@ body {
   animation: whatsapp-pulse 2.4s ease-out infinite;
 }
 
+/* Portfolio image loading skeleton — a subtle gold-tinted shimmer that shows
+   while the image fetches. The opaque image paints on top (object-cover, fill),
+   so the shimmer is only visible during load. Auto-disabled under
+   prefers-reduced-motion (global rule above). */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-skeleton {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-surface-900) 0%,
+    var(--color-surface-800) 50%,
+    var(--color-surface-900) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

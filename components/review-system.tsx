@@ -151,7 +151,7 @@ export function ReviewSystem() {
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedFilter(filter.id as 'all' | 'verified' | 'recent' | 'highest')}
               className={cn(
-                "px-4 py-2 rounded-lg text-sm font-medium transition-all",
+                "px-4 py-2 rounded-lg text-sm font-medium transition-all outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-black-rich)]",
                 selectedFilter === filter.id
                   ? "bg-[var(--color-gold-primary)] text-[var(--color-black-pure)]"
                   : "bg-[var(--color-surface-800)] text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-700)]"

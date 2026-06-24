@@ -84,10 +84,10 @@ export function Footer() {
             © 2026 Manaseerz. All rights reserved. {contactInfo.baseLocation}
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-gold-primary)] transition-colors">
+            <a href="/privacy" className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-gold-primary)] transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-gold-primary)] transition-colors">
+            <a href="/terms" className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-gold-primary)] transition-colors">
               Terms of Service
             </a>
           </div>

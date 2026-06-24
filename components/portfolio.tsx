@@ -491,11 +491,11 @@ function PortfolioCard({ project, index, onClick }: { project: typeof portfolioI
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
       onClick={onClick}
-      className="group cursor-pointer"
+      className="group cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-black-pure)] rounded-2xl"
     >
       <div className="relative overflow-hidden rounded-2xl bg-[var(--color-surface-900)]/50 border border-[var(--color-surface-800)]">
-        {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-900)]">
+        {/* Image — shimmer skeleton shows until the opaque image paints on top */}
+        <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-900)] shimmer-skeleton">
           <Image
             src={project.thumbnail || project.image}
             alt={project.title}
