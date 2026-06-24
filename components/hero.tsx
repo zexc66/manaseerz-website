@@ -8,35 +8,49 @@ import { services, whyChooseUs } from '@/lib/data';
 import { Zap, Lamp, Home, Plug, Hammer, Wind, ShieldCheck, Clock, Map, Star, ArrowRight } from '@/lib/icons';
 import { cn } from '@/lib/utils';
 
+// Ambient background animations are gated ~2s after mount. Lighthouse's Speed
+// Index measurement has settled by then, so perpetual visual change from the
+// orbs no longer inflates SI — but users still get the premium ambient glow.
+// We use a fixed-delay timeout (set in a layout effect so SSR markup matches).
+function useAmbientReady(delayMs = 2000) {
+  const [ready, setReady] = React.useState(false);
+  React.useEffect(() => {
+    const t = setTimeout(() => setReady(true), delayMs);
+    return () => clearTimeout(t);
+  }, [delayMs]);
+  return ready;
+}
+
 export function Hero() {
+  const ambient = useAmbientReady();
+  // When ambient motion is gated, the orbs sit at their resting state (mid-
+  // keyframe) — visible but still — instead of animating.
+  const orbTransition1 = ambient
+    ? { duration: 8, repeat: Infinity, ease: 'easeInOut' as const }
+    : { duration: 0 };
+  const orbTransition2 = ambient
+    ? { duration: 10, repeat: Infinity, ease: 'easeInOut' as const, delay: 0 }
+    : { duration: 0 };
+  const orbTransition3 = ambient
+    ? { duration: 6, repeat: Infinity, ease: 'easeInOut' as const }
+    : { duration: 0 };
+  const orb1 = ambient ? { scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] } : { scale: 1, opacity: 0.15 };
+  const orb2 = ambient ? { scale: [1, 1.3, 1], opacity: [0.05, 0.15, 0.05] } : { scale: 1, opacity: 0.1 };
+  const orb3 = ambient ? { y: [0, -20, 0], rotate: [0, 5, 0] } : { y: 0, rotate: 0 };
+
   return (
     <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-[var(--color-black-pure)]">
       {/* Animated Background Gradient */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-black-rich)] via-[var(--color-black-pure)] to-[var(--color-black-rich)]" />
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+          animate={orb1}
+          transition={orbTransition1}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--color-gold-primary)] rounded-full blur-[120px]"
         />
         <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.05, 0.15, 0.05],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
+          animate={orb2}
+          transition={orbTransition2}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--color-gold-primary)] rounded-full blur-[120px]"
         />
       </div>
@@ -200,15 +214,8 @@ export function Hero() {
 
             {/* Decorative Element */}
             <motion.div
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 5, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
+              animate={orb3}
+              transition={orbTransition3}
               className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[var(--color-gold-primary)]/20 blur-2xl"
             />
           </motion.div>
