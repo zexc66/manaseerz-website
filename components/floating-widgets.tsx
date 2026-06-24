@@ -3,6 +3,7 @@
 import { Chatbot } from './chatbot';
 import { WhatsAppButton } from './whatsapp-button';
 import { BackToTop } from './back-to-top';
+import { ScrollProgress } from './scroll-progress';
 
 /**
  * The floating UI layer rendered once in the root layout so every route gets
@@ -16,6 +17,7 @@ import { BackToTop } from './back-to-top';
 export function FloatingWidgets() {
   return (
     <>
+      <ScrollProgress />
       <Chatbot />
       <WhatsAppButton />
       <BackToTop />

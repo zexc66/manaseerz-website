@@ -5,9 +5,24 @@ import { Phone, Menu, X } from '@/lib/icons';
 import { useState, useEffect } from 'react';
 import { smoothScroll, cn } from '@/lib/utils';
 
+const BANNER_HEIGHT = 36; // px — kept in sync with the strip's h-9 below
+const BANNER_KEY = 'manaseerz:emergency-banner-dismissed';
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // Emergency banner — dismissible, persisted so it stays closed across reloads.
+  const [showBanner, setShowBanner] = useState(false);
+
+  useEffect(() => {
+    // Read after mount so SSR/CSR markup match (no hydration mismatch).
+    setShowBanner(!localStorage.getItem(BANNER_KEY));
+  }, []);
+
+  const dismissBanner = () => {
+    try { localStorage.setItem(BANNER_KEY, '1'); } catch {}
+    setShowBanner(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,12 +42,46 @@ export function Navbar() {
 
   return (
     <>
+      {/* Emergency call banner — slim gold strip at the very top, dismissible.
+          Highest-margin jobs for an electrician are emergencies, so the 24/7
+          number is always one tap away. Sits above the navbar (higher z); when
+          shown, the navbar is pushed down by the banner height. */}
+      <AnimatePresence>
+        {showBanner && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: BANNER_HEIGHT, opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="fixed top-0 left-0 right-0 z-[1085] overflow-hidden bg-[var(--color-gold-primary)] text-[var(--color-black-pure)]"
+          >
+            <div className="mx-auto flex h-9 max-w-7xl items-center justify-center gap-2 px-4 text-center text-xs font-semibold sm:text-sm">
+              <a
+                href="tel:6824515951"
+                className="flex items-center gap-2 transition-opacity hover:opacity-80"
+              >
+                <Phone className="h-3.5 w-3.5" />
+                <span>24/7 Emergency Electrical Service · Call (682) 451-5951</span>
+              </a>
+              <button
+                onClick={dismissBanner}
+                aria-label="Dismiss emergency banner"
+                className="absolute right-3 flex h-6 w-6 items-center justify-center rounded-full transition-colors hover:bg-black/10"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
+        style={{ top: showBanner ? BANNER_HEIGHT : 0 }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-[var(--z-sticky)] transition-all duration-300',
+          'fixed left-0 right-0 z-[var(--z-sticky)] transition-all duration-300',
           isScrolled
             ? 'bg-[var(--color-black-rich)]/95 backdrop-blur-md shadow-lg'
             : 'bg-transparent'

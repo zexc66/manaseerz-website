@@ -6,6 +6,7 @@ import { Footer } from '@/components/footer';
 import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
 import { ServiceIcon } from '@/components/service-icon';
+import { ServiceFaqSchema } from '@/components/service-faq-schema';
 import { ArrowRight, CheckCircle2, ArrowLeft, Clock, ShieldCheck } from 'lucide-react';
 import { getServiceDetail, allServiceDetails } from '@/lib/services';
 
@@ -47,6 +48,7 @@ export default async function ServiceDetailPage({
 
   return (
     <AppWrapper>
+      <ServiceFaqSchema service={service} />
       <main className="min-h-screen bg-[var(--color-black-pure)]">
         <Navbar />
 

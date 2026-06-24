@@ -7,6 +7,7 @@ import { ServiceAreas } from '@/components/service-areas';
 import { EnhancedContactForm } from '@/components/enhanced-contact-form';
 import { ReviewSystem } from '@/components/review-system';
 import { AboutSection } from '@/components/about-section';
+import { ComparisonTable } from '@/components/comparison-table';
 import { Footer } from '@/components/footer';
 import { AppWrapper } from '@/components/interactive-components';
 import { Toaster } from '@/components/toaster';
@@ -19,6 +20,7 @@ export default function HomePage() {
         <Hero />
         <Services />
         <WhyChooseUs />
+        <ComparisonTable />
         <Portfolio />
         <ServiceAreas />
         <ReviewSystem />
