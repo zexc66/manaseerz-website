@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { MapPin, CheckCircle, Phone, Mail } from 'lucide-react';
 import { cities, contactInfo } from '@/lib/data';
+import { allCities } from '@/lib/cities';
 import { cn } from '@/lib/utils';
 
 // DFW metroplex cities with coordinates (simplified)
@@ -216,6 +218,25 @@ export function ServiceAreas() {
                     {city}
                   </button>
                 ))}
+              </div>
+
+              {/* Crawlable links to dedicated city landing pages (local SEO). */}
+              <div className="mt-6 pt-6 border-t border-[var(--color-surface-800)]">
+                <p className="text-sm font-medium text-[var(--color-text-secondary)] mb-3">
+                  Browse your city:
+                </p>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {allCities.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/service-area/${c.slug}`}
+                      className="flex items-center gap-1.5 rounded-lg border border-[var(--color-surface-800)] bg-[var(--color-surface-900)]/50 px-3 py-2 text-sm text-[var(--color-text-secondary)] transition-all hover:border-[var(--color-gold-primary)] hover:text-[var(--color-gold-primary)]"
+                    >
+                      <MapPin className="h-3.5 w-3.5 shrink-0" />
+                      <span className="truncate">{c.name}, TX</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

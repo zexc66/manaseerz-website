@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { allServiceDetails } from '@/lib/services';
+import { citySlugs } from '@/lib/cities';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://manaseerz-web.vercel.app';
@@ -23,5 +24,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...routes, ...serviceRoutes];
+  // One URL per service-area city landing page — local SEO landing pages.
+  const cityRoutes: MetadataRoute.Sitemap = citySlugs.map((slug) => ({
+    url: `${baseUrl}/service-area/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  return [...routes, ...serviceRoutes, ...cityRoutes];
 }
