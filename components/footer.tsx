@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock, ArrowRight, Zap } from '@/lib/icons';
 import { contactInfo, cities } from '@/lib/data';
 
@@ -10,8 +11,8 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold-primary)]">
+            <Link href="/" aria-label="Manaseerz Electric — home" className="group flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold-primary)] transition-transform group-hover:scale-105">
                 <Zap className="h-6 w-6 text-[var(--color-black-pure)]" />
               </div>
               <div>
@@ -22,7 +23,7 @@ export function Footer() {
                   ELECTRIC
                 </p>
               </div>
-            </div>
+            </Link>
             <p className="max-w-md text-[var(--color-text-secondary)] leading-relaxed">
               Licensed electrical specialists serving the Dallas-Fort Worth Metroplex.
               Quality work, transparent pricing, professional results.

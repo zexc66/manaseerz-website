@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { Phone, Menu, X } from '@/lib/icons';
 import { useState, useEffect } from 'react';
 import { smoothScroll, cn } from '@/lib/utils';
@@ -89,24 +90,29 @@ export function Navbar() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
-            {/* Logo */}
+            {/* Logo — links to home */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="flex items-center gap-3"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold-primary)]">
-                <Zap className="h-6 w-6 text-[var(--color-black-pure)]" />
-              </div>
-              <div>
-                <h1 className="font-display text-xl font-bold text-[var(--color-text-primary)]">
-                  MANASEERZ
-                </h1>
-                <p className="text-xs text-[var(--color-gold-primary)]">
-                  ELECTRIC
-                </p>
-              </div>
+              <Link
+                href="/"
+                aria-label="Manaseerz Electric — home"
+                className="group flex items-center gap-3 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-black-rich)]"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold-primary)] transition-transform group-hover:scale-105">
+                  <Zap className="h-6 w-6 text-[var(--color-black-pure)]" />
+                </div>
+                <div>
+                  <h1 className="font-display text-xl font-bold text-[var(--color-text-primary)]">
+                    MANASEERZ
+                  </h1>
+                  <p className="text-xs text-[var(--color-gold-primary)]">
+                    ELECTRIC
+                  </p>
+                </div>
+              </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
